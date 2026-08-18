@@ -108,35 +108,26 @@ export default function Home() {
       <Header />
       <main>
         <section className="hero hero-editorial">
-          <div className="hero-editorial__wash" aria-hidden="true" />
-          <div className="hero-editorial__leaf leaf-one" aria-hidden="true"><Icon name="leaf" /></div>
-          <div className="hero-editorial__leaf leaf-two" aria-hidden="true"><Icon name="leaf" /></div>
-          <div className="hero-editorial__leaf leaf-three" aria-hidden="true"><Icon name="leaf" /></div>
+          <img className="hero-editorial__palms" src="/Palmtreesides.png" alt="" aria-hidden="true" />
 
-          <div className="hero-editorial__headline">
-            <p className="eyebrow"><span /> 75mg Mango chewable</p>
-            <h1>
-              <span>Good vibes.</span>
-              <span>Good karma.</span>
-            </h1>
-          </div>
+          <h1 className="hero-editorial__headline" aria-label="Good vibes. Good karma.">
+            <span className="hero-editorial__phrase hero-editorial__phrase--left">
+              <span className="orange">Good</span>
+              <span>Vibes</span>
+            </span>
+            <span className="hero-editorial__phrase hero-editorial__phrase--right">
+              <span>Good</span>
+              <span className="orange">Karma</span>
+            </span>
+          </h1>
 
           <div className="hero-editorial__product">
-            <div className="hero-editorial__sun" aria-hidden="true" />
             <img src="/KavaKarma_75mg_50ct_Bottle_Mango_FRONT.png" alt="Kava Karma 75mg Mango chewable tablets" />
           </div>
 
-          <img className="hero-editorial__yoga" src="/YogaCut.png" alt="Woman practicing a calm yoga pose" />
+          <img className="hero-editorial__yoga" src="/YogaPose.png" alt="Woman seated in a calm meditation pose" />
 
-          <div className="hero-editorial__copy">
-            <p>Turn the volume down without checking out. A precisely portioned Mango chewable made for easier evenings and calmer company.</p>
-            <ShopLink>Find your calm <Icon name="arrow" /></ShopLink>
-          </div>
-
-          <div className="hero-editorial__note" aria-label="Product highlights">
-            <span><b>75mg</b> kava root extract</span>
-            <span><b>Mango</b> chewable</span>
-          </div>
+          <ShopLink className="button hero-editorial__shop">Shop Kava Karma</ShopLink>
         </section>
 
         <section className="trust-strip" aria-label="Product features">
