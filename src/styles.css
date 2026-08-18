@@ -990,7 +990,7 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   margin: 0;
   color: var(--ocean);
   font-family: "Cooper Std", "Cooper Black", "Corben", Georgia, serif;
-  font-size: clamp(76px, 6.9vw, 102px);
+  font-size: clamp(80px, 7.7vw, 112px);
   line-height: .82;
   letter-spacing: -.055em;
   text-transform: uppercase;
@@ -1007,11 +1007,11 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 .hero-editorial__phrase > span { display: block; }
 .hero-editorial__phrase .orange { color: var(--orange); }
 .hero-editorial__phrase--left {
-  left: max(8%, calc(50% - 550px));
-  top: 14%;
+  left: max(8%, calc(50% - 430px));
+  top: 16%;
 }
 .hero-editorial__phrase--right {
-  left: calc(50% + 104px);
+  left: calc(50% + 80px);
   top: 50%;
 }
 .hero-editorial__product {
@@ -1019,7 +1019,7 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   z-index: 6;
   left: calc(50% - 292px);
   top: 4%;
-  width: clamp(390px, 32vw, 460px);
+  width: clamp(430px, 36vw, 510px);
   height: 84%;
   display: grid;
   place-items: center;
@@ -1029,13 +1029,13 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transform: scale(1.08) rotate(13deg);
+  transform: scale(1.14) rotate(13deg);
   filter: drop-shadow(0 25px 19px rgba(20,60,84,.18));
 }
 .hero-editorial__yoga {
   position: absolute;
   z-index: 5;
-  left: calc(50% + 210px);
+  left: calc(50% + 92px);
   top: 17%;
   width: clamp(230px, 23vw, 330px);
   height: 40%;
@@ -1047,7 +1047,7 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 .hero-editorial__shop {
   position: absolute;
   z-index: 8;
-  left: max(12%, calc(50% - 510px));
+  left: max(12%, calc(50% - 340px));
   top: 58%;
   min-height: 48px;
   padding: 0 18px;
@@ -1063,11 +1063,11 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 
 @media (min-width: 901px) and (max-width: 1199px) {
   .hero-editorial__headline { font-size: clamp(70px, 7.7vw, 86px); }
-  .hero-editorial__phrase--left { left: 6%; }
-  .hero-editorial__phrase--right { left: 54%; top: 51%; }
-  .hero-editorial__product { left: 27%; width: 39%; }
-  .hero-editorial__yoga { left: auto; right: 3%; width: 28%; }
-  .hero-editorial__shop { left: 11%; top: 59%; }
+  .hero-editorial__phrase--left { left: 11%; }
+  .hero-editorial__phrase--right { left: 56%; top: 51%; }
+  .hero-editorial__product { left: 28%; width: 42%; }
+  .hero-editorial__yoga { left: 61%; right: auto; width: 28%; }
+  .hero-editorial__shop { left: 18%; top: 59%; }
 }
 
 @media (max-width: 900px) {
