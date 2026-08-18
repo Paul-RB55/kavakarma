@@ -1,25 +1,22 @@
 {
   "name": "kava-karma-mini-site",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
-  "engines": {
-    "node": ">=22.13.0"
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy"
+    "preview": "vite preview",
+    "deploy": "npm run build && rm -f dist/_redirects && wrangler deploy"
   },
   "dependencies": {
-    "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
   },
   "devDependencies": {
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "6.0.2",
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.1.7",
+    "@vitejs/plugin-react": "6.0.5",
     "typescript": "5.9.3",
     "vite": "8.0.13",
     "wrangler": "4.124.0"

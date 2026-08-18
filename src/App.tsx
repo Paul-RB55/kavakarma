@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 
 const SHOP_URL = "https://realbotanicals.com/products/kava-tablets";
@@ -262,4 +260,3 @@ export default function Home() {
     </div>
   );
 }
-
