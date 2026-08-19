@@ -1132,13 +1132,13 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
     right: 0;
     top: 57%;
     align-items: flex-end;
-    gap: 5px;
+    gap: 28px;
     font-size: 82px;
     letter-spacing: .07em;
   }
   .hero-editorial__product {
     left: 12%;
-    top: 11.7%;
+    top: 9.2%;
     width: 77%;
     max-width: none;
     height: 55%;
@@ -1148,17 +1148,17 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   .hero-editorial__description {
     left: 50%;
     right: auto;
-    top: 80.5%;
-    width: min(338px, calc(100% - 48px));
-    font-size: 12px;
-    line-height: 1.25;
+    top: 80%;
+    width: min(360px, calc(100% - 24px));
+    font-size: 14px;
+    line-height: 1.18;
     text-align: center;
     transform: translateX(-50%);
   }
   .hero-editorial__shop {
     left: 50%;
     top: auto;
-    bottom: 12px;
+    bottom: 26px;
     width: min(253px, calc(100vw - 40px));
     min-height: 60px;
     transform: translateX(-50%);
