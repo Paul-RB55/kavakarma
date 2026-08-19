@@ -1113,9 +1113,9 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   .hero-editorial__palms { display: none; }
   .hero-editorial__stage { width: 100%; }
   .hero-editorial__headline {
-    font-size: clamp(68px, 21vw, 82px);
+    font-size: 114px;
     line-height: .76;
-    letter-spacing: -.035em;
+    letter-spacing: .02em;
     text-align: left;
   }
   .hero-editorial__phrase {
@@ -1124,47 +1124,61 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   }
   .hero-editorial__phrase--left {
     left: 0;
-    top: 5%;
+    top: 6%;
     gap: 10px;
-    transform: scaleX(1.12);
-    transform-origin: left top;
   }
   .hero-editorial__phrase--right {
     left: auto;
     right: 0;
-    top: 57.5%;
+    top: 59%;
     align-items: flex-end;
     gap: 10px;
-    transform: scaleX(1.22);
-    transform-origin: right top;
+    font-size: 122px;
+    letter-spacing: .07em;
   }
   .hero-editorial__product {
     left: 12%;
-    top: 11.7%;
+    top: 12.3%;
     width: 77%;
     max-width: none;
     height: 55%;
   }
-  .hero-editorial__product img { transform: scale(1.29) rotate(24deg); }
+  .hero-editorial__product img { transform: scale(1.25) rotate(24deg); }
   .hero-editorial__yoga { display: none; }
   .hero-editorial__description {
-    left: 24px;
-    right: 24px;
+    left: 50%;
+    right: auto;
     top: 80.5%;
-    width: auto;
+    width: min(338px, calc(100% - 48px));
     font-size: 12px;
     line-height: 1.25;
     text-align: center;
+    transform: translateX(-50%);
   }
   .hero-editorial__shop {
     left: 50%;
     top: auto;
     bottom: 12px;
-    width: min(252px, calc(100vw - 40px));
+    width: min(270px, calc(100vw - 40px));
     min-height: 60px;
     transform: translateX(-50%);
   }
   .hero-editorial__shop:hover { transform: translateX(-50%) translateY(-2px); }
+  .header-inner { align-items: center; }
+  .header-actions {
+    height: 100%;
+    align-items: center;
+    gap: 2px;
+  }
+  .header-actions .shop-link,
+  .header-actions .menu {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+  }
+  .brand { width: 68px; height: 60px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
