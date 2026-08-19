@@ -1125,14 +1125,14 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   .hero-editorial__phrase--left {
     left: 0;
     top: 4.5%;
-    gap: 7px;
+    gap: 14px;
   }
   .hero-editorial__phrase--right {
     left: auto;
     right: 0;
     top: 57.8%;
     align-items: flex-end;
-    gap: 25px;
+    gap: 14px;
     font-size: 82px;
     letter-spacing: .07em;
   }
@@ -1148,7 +1148,7 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   .hero-editorial__description {
     left: 50%;
     right: auto;
-    top: 78.8%;
+    top: 78.05%;
     width: min(360px, calc(100% - 24px));
     font-size: 14px;
     line-height: 1.18;
