@@ -172,11 +172,13 @@ export default function Home() {
           </div>
           <div className="lifestyle-grid">
             {feelings.map((item) => (
-              <article className="lifestyle-card" key={item.title} style={{ backgroundImage: `url("${item.image}")`, backgroundPosition: item.position }}>
+              <article className="lifestyle-card" key={item.title}>
+                <div className="lifestyle-card__surface" style={{ backgroundImage: `url("${item.image}")`, backgroundPosition: item.position }}>
+                  <div className="lifestyle-card__content"><h3>{item.title}</h3><p>{item.copy}</p></div>
+                </div>
                 <span className="lifestyle-card__badge">
                   <img src={item.icon} alt="" aria-hidden="true" />
                 </span>
-                <div className="lifestyle-card__content"><h3>{item.title}</h3><p>{item.copy}</p></div>
               </article>
             ))}
           </div>
