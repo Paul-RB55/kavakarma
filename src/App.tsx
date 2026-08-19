@@ -60,10 +60,34 @@ function Header() {
 }
 
 const feelings = [
-  { title: "The day softens.", copy: "A little space between you and everything asking for your attention.", image: LIFESTYLE_IMAGE, position: "center 58%" },
-  { title: "Conversation flows.", copy: "A calmer social ritual when another drink is not the move.", image: HERO_MOBILE, position: "center 72%" },
-  { title: "Your head stays here.", copy: "Unwind without making the rest of the evening disappear.", image: ROOT_IMAGE, position: "center" },
-  { title: "The ritual gets easier.", copy: "No straining, muddy tea, or cleanup waiting at the end.", image: TEA_IMAGE, position: "center" },
+  {
+    title: "The day softens.",
+    copy: "A little breathing room between you and everything that wanted your attention.",
+    image: "/Daysoftens_Cardimage.jpg",
+    icon: "/Daysofticon.svg",
+    position: "center",
+  },
+  {
+    title: "Conversation comes easier.",
+    copy: "A calmer way to settle into dinner, friends, or wherever the night takes you.",
+    image: "/Conversation_Cardimage.jpg",
+    icon: "/Convoicon.svg",
+    position: "center",
+  },
+  {
+    title: "You stay present.",
+    copy: "Made for unwinding without making the rest of your evening disappear.",
+    image: "/staypresent_Cardimage.jpg",
+    icon: "/StayPresent.svg",
+    position: "center",
+  },
+  {
+    title: "The ritual stays simple.",
+    copy: "One chewable tablet. No mixing, straining, or cleaning up afterward.",
+    image: "/Ritualsimple_Cardimage.jpg",
+    icon: "/ritualicon.svg",
+    position: "center",
+  },
 ];
 
 const faqs = [
@@ -139,14 +163,20 @@ export default function Home() {
         </section>
 
         <section className="story section" id="story">
-          <div className="section-heading">
-            <p className="eyebrow"><span /> For lighter evenings</p>
-            <h2>All the calm in<br /><em>one easy tablet.</em></h2>
+          <div className="section-heading story-heading">
+            <p className="eyebrow"><span /> When work ends but your brain doesn’t</p>
+            <h2>Relax into the night.<br /><em>Stay in it.</em></h2>
+            <p className="story-heading__body">
+              Kava is known for a relaxed, social kind of unwind. The edge comes off, the day feels farther away, and you still have an evening left to enjoy.
+            </p>
           </div>
           <div className="lifestyle-grid">
             {feelings.map((item) => (
               <article className="lifestyle-card" key={item.title} style={{ backgroundImage: `url("${item.image}")`, backgroundPosition: item.position }}>
-                <div><h3>{item.title}</h3><p>{item.copy}</p></div>
+                <span className="lifestyle-card__badge">
+                  <img src={item.icon} alt="" aria-hidden="true" />
+                </span>
+                <div className="lifestyle-card__content"><h3>{item.title}</h3><p>{item.copy}</p></div>
               </article>
             ))}
           </div>
