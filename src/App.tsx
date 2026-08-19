@@ -109,28 +109,29 @@ export default function Home() {
       <main>
         <section className="hero hero-editorial">
           <img className="hero-editorial__palms" src="/Palmtreesides.png" alt="" aria-hidden="true" />
+          <div className="hero-editorial__stage">
+            <h1 className="hero-editorial__headline" aria-label="Good vibes. Good karma.">
+              <span className="hero-editorial__phrase hero-editorial__phrase--left">
+                <span className="orange">Good</span>
+                <span>Vibes</span>
+              </span>
+              <span className="hero-editorial__phrase hero-editorial__phrase--right">
+                <span>Good</span>
+                <span className="orange">Karma</span>
+              </span>
+            </h1>
 
-          <h1 className="hero-editorial__headline" aria-label="Good vibes. Good karma.">
-            <span className="hero-editorial__phrase hero-editorial__phrase--left">
-              <span className="orange">Good</span>
-              <span>Vibes</span>
-            </span>
-            <span className="hero-editorial__phrase hero-editorial__phrase--right">
-              <span>Good</span>
-              <span className="orange">Karma</span>
-            </span>
-          </h1>
+            <div className="hero-editorial__product">
+              <img src="/KavaKarma_75mg_50ct_Bottle_Mango_FRONT.png" alt="Kava Karma 75mg Mango chewable tablets" />
+            </div>
 
-          <div className="hero-editorial__product">
-            <img src="/KavaKarma_75mg_50ct_Bottle_Mango_FRONT.png" alt="Kava Karma 75mg Mango chewable tablets" />
+            <img className="hero-editorial__yoga" src="/YogaPose.png" alt="Woman seated in a calm meditation pose" />
+
+            <ShopLink className="button hero-editorial__shop">Shop Kava Karma</ShopLink>
+            <p className="hero-editorial__description">
+              Turn the volume down without checking out. A precisely portioned tablet made for easier evenings and calmer company.
+            </p>
           </div>
-
-          <img className="hero-editorial__yoga" src="/YogaPose.png" alt="Woman seated in a calm meditation pose" />
-
-          <ShopLink className="button hero-editorial__shop">Shop Kava Karma</ShopLink>
-          <p className="hero-editorial__description">
-            Turn the volume down without checking out. A precisely portioned tablet made for easier evenings and calmer company.
-          </p>
         </section>
 
         <section className="trust-strip" aria-label="Product features">

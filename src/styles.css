@@ -983,6 +983,13 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   filter: sepia(.25) hue-rotate(118deg) saturate(.75);
   pointer-events: none;
 }
+.hero-editorial__stage {
+  position: relative;
+  z-index: 2;
+  width: min(1024px, 100%);
+  height: 100%;
+  margin: 0 auto;
+}
 .hero-editorial__headline {
   position: absolute;
   z-index: 3;
@@ -990,7 +997,7 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   margin: 0;
   color: var(--ocean);
   font-family: "Cooper Std", "Cooper Black", "Corben", Georgia, serif;
-  font-size: clamp(80px, 7.7vw, 112px);
+  font-size: clamp(76px, 9vw, 92px);
   line-height: .82;
   letter-spacing: -.055em;
   text-transform: uppercase;
@@ -1007,19 +1014,20 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 .hero-editorial__phrase > span { display: block; }
 .hero-editorial__phrase .orange { color: var(--orange); }
 .hero-editorial__phrase--left {
-  left: max(8%, calc(50% - 430px));
-  top: 16%;
+  left: 12.5%;
+  top: 15.5%;
 }
 .hero-editorial__phrase--right {
-  left: calc(50% + 80px);
-  top: 50%;
+  left: 56.7%;
+  top: 50.5%;
 }
 .hero-editorial__product {
   position: absolute;
   z-index: 6;
-  left: calc(50% - 292px);
+  left: 21.5%;
   top: 4%;
-  width: clamp(430px, 36vw, 510px);
+  width: 50%;
+  max-width: 510px;
   height: 84%;
   display: grid;
   place-items: center;
@@ -1035,9 +1043,9 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 .hero-editorial__yoga {
   position: absolute;
   z-index: 5;
-  left: calc(50% + 92px);
+  left: 61.8%;
   top: 17%;
-  width: clamp(230px, 23vw, 330px);
+  width: 24%;
   height: 40%;
   object-fit: contain;
   object-position: center bottom;
@@ -1047,8 +1055,8 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 .hero-editorial__shop {
   position: absolute;
   z-index: 8;
-  left: max(12%, calc(50% - 340px));
-  top: 58%;
+  left: 18.2%;
+  top: 58.5%;
   min-height: 48px;
   padding: 0 18px;
   color: white;
@@ -1063,8 +1071,8 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 .hero-editorial__description {
   position: absolute;
   z-index: 8;
-  left: max(12%, calc(50% - 340px));
-  top: calc(58% + 60px);
+  left: 17.3%;
+  top: calc(58.5% + 60px);
   width: 250px;
   margin: 0;
   color: var(--ocean);
@@ -1073,16 +1081,6 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   font-weight: 500;
   line-height: 1.25;
   text-transform: uppercase;
-}
-
-@media (min-width: 901px) and (max-width: 1199px) {
-  .hero-editorial__headline { font-size: clamp(70px, 7.7vw, 86px); }
-  .hero-editorial__phrase--left { left: 11%; }
-  .hero-editorial__phrase--right { left: 56%; top: 51%; }
-  .hero-editorial__product { left: 28%; width: 42%; }
-  .hero-editorial__yoga { left: 61%; right: auto; width: 28%; }
-  .hero-editorial__shop { left: 18%; top: 59%; }
-  .hero-editorial__description { left: 18%; top: calc(59% + 60px); }
 }
 
 @media (max-width: 900px) {
@@ -1108,14 +1106,16 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
     min-height: 734px;
     height: clamp(734px, calc(100svh - 102px), 800px);
   }
-  .hero-editorial__palms {
-    opacity: .055;
-    object-fit: fill;
-    object-position: center;
+  .hero.hero-editorial::before {
+    opacity: .3;
+    background: url("/MobileBackground.jpg") center / cover no-repeat;
   }
+  .hero-editorial__palms { display: none; }
+  .hero-editorial__stage { width: 100%; }
   .hero-editorial__headline {
-    font-size: clamp(55px, 15.9vw, 62px);
-    line-height: .86;
+    font-size: clamp(68px, 21vw, 82px);
+    line-height: .76;
+    letter-spacing: -.035em;
     text-align: left;
   }
   .hero-editorial__phrase {
@@ -1124,23 +1124,28 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   }
   .hero-editorial__phrase--left {
     left: 0;
-    top: 3%;
+    top: 5%;
     gap: 10px;
+    transform: scaleX(1.12);
+    transform-origin: left top;
   }
   .hero-editorial__phrase--right {
     left: auto;
     right: 0;
-    top: 56%;
+    top: 57.5%;
     align-items: flex-end;
     gap: 10px;
+    transform: scaleX(1.22);
+    transform-origin: right top;
   }
   .hero-editorial__product {
     left: 12%;
-    top: 10%;
+    top: 11.7%;
     width: 77%;
+    max-width: none;
     height: 55%;
   }
-  .hero-editorial__product img { transform: scale(1.4) rotate(16deg); }
+  .hero-editorial__product img { transform: scale(1.29) rotate(24deg); }
   .hero-editorial__yoga { display: none; }
   .hero-editorial__description {
     left: 24px;
