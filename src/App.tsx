@@ -37,7 +37,7 @@ function Header() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className="announcement">FOR ADULTS 18+ <b>✦</b> FREE SHIPPING $75+ <b>✦</b> GOOD VIBES. GOOD KARMA.</div>
+      <div className="announcement">FOR ADULTS 18+ <b>✦</b> FREE SHIPPING $75+</div>
       <header className="header">
         <div className="header-inner">
           <Brand />
@@ -128,6 +128,9 @@ export default function Home() {
           <img className="hero-editorial__yoga" src="/YogaPose.png" alt="Woman seated in a calm meditation pose" />
 
           <ShopLink className="button hero-editorial__shop">Shop Kava Karma</ShopLink>
+          <p className="hero-editorial__description">
+            Turn the volume down without checking out. A precisely portioned tablet made for easier evenings and calmer company.
+          </p>
         </section>
 
         <section className="trust-strip" aria-label="Product features">
