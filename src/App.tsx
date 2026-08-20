@@ -1,6 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-const SHOP_URL = "https://realbotanicals.com/products/kava-tablets";
+const PRODUCT_PAGE_URL = "/product";
+const SHOPIFY_STORE_URL = "https://realbotanicals.com";
+const DEFAULT_VARIANT_ID = "55100370485567";
+const PRODUCT_IMAGE = "/KavaKarma_75mg_50ct_Bottle_Mango_FRONT.png";
+
+// Launch-day product settings live here so prices, IDs, and imagery can be swapped in one place.
+const PRODUCT_VARIANTS = [
+  { id: "55100370452799", count: 10, price: 14.99, note: "Try it out", badge: "", image: PRODUCT_IMAGE },
+  { id: "55100370485567", count: 20, price: 26.99, note: "The regular", badge: "Most popular", image: PRODUCT_IMAGE },
+  { id: "55100370518335", count: 50, price: 59.99, note: "Best value", badge: "Best value", image: PRODUCT_IMAGE },
+] as const;
 const HERO_DESKTOP = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaKarmaLPHero.jpg?v=1786735192";
 const HERO_MOBILE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaKarmaLPMobileHero.jpg?v=1786735192";
 const ROOT_IMAGE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaKarmaRoot.jpg?v=1786735786";
@@ -23,14 +33,14 @@ function Icon({ name }: { name: IconName }) {
 
 function Brand() {
   return (
-    <a className="brand" href="#top" aria-label="Kava Karma home">
+    <a className="brand" href="/" aria-label="Kava Karma home">
       <img src="/kava-karma-logo.png" alt="Kava Karma" />
     </a>
   );
 }
 
 function ShopLink({ className = "button primary", children }: { className?: string; children: React.ReactNode }) {
-  return <a className={className} data-shop-link href={SHOP_URL}>{children}</a>;
+  return <a className={className} data-shop-link href={`${PRODUCT_PAGE_URL}?variant=${DEFAULT_VARIANT_ID}`}>{children}</a>;
 }
 
 function Header() {
@@ -42,9 +52,9 @@ function Header() {
         <div className="header-inner">
           <Brand />
           <nav className={open ? "nav open" : "nav"} aria-label="Main navigation">
-            <a href="#top" onClick={() => setOpen(false)}>Home</a>
-            <a href="#product" onClick={() => setOpen(false)}>Shop</a>
-            <a href="#story" onClick={() => setOpen(false)}>Why Kava</a>
+            <a href="/" onClick={() => setOpen(false)}>Home</a>
+            <a href={`${PRODUCT_PAGE_URL}?variant=${DEFAULT_VARIANT_ID}`} onClick={() => setOpen(false)}>Shop</a>
+            <a href="/#story" onClick={() => setOpen(false)}>Why Kava</a>
             <ShopLink className="nav-shop">Shop Kava Karma</ShopLink>
           </nav>
           <div className="header-actions">
@@ -99,7 +109,7 @@ const faqs = [
   ["Is there anything I should know before taking it?", "Do not combine kava with alcohol, use it if you have liver problems, drive after taking it, or use it while pregnant or nursing. Talk with a healthcare provider before use if you take prescription medication."],
 ];
 
-export default function Home() {
+function Home() {
   const [showSticky, setShowSticky] = useState(false);
 
   useEffect(() => {
@@ -122,7 +132,7 @@ export default function Home() {
     "@type": "Product",
     name: "Kava Karma Tablets",
     brand: { "@type": "Brand", name: "Real Botanicals" },
-    url: SHOP_URL,
+    url: `${PRODUCT_PAGE_URL}?variant=${DEFAULT_VARIANT_ID}`,
     image: HERO_DESKTOP,
     description: "Mango-flavored chewable tablets with 75mg of noble kava root extract per tablet.",
   };
@@ -291,4 +301,146 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
     </div>
   );
+}
+
+function ProductPage() {
+  const requestedVariant = new URLSearchParams(window.location.search).get("variant");
+  const initialVariant = PRODUCT_VARIANTS.find((variant) => variant.id === requestedVariant) ?? PRODUCT_VARIANTS[1];
+  const [selectedId, setSelectedId] = useState(initialVariant.id);
+  const [quantity, setQuantity] = useState(1);
+  const selected = PRODUCT_VARIANTS.find((variant) => variant.id === selectedId) ?? PRODUCT_VARIANTS[1];
+  const total = useMemo(() => (selected.price * quantity).toFixed(2), [selected.price, quantity]);
+
+  const checkoutUrl = useMemo(() => {
+    const passthrough = new URLSearchParams(window.location.search);
+    passthrough.delete("variant");
+    const suffix = passthrough.toString();
+    return `${SHOPIFY_STORE_URL}/cart/${selected.id}:${quantity}?checkout${suffix ? `&${suffix}` : ""}`;
+  }, [selected.id, quantity]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Kava Karma Mango Chewable Tablets";
+  }, []);
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("variant", selected.id);
+    window.history.replaceState({}, "", url);
+  }, [selected.id]);
+
+  return (
+    <div className="site-shell product-page" id="top">
+      <Header />
+      <main className="pdp-main">
+        <section className="pdp-hero" aria-labelledby="product-title">
+          <div className="pdp-gallery">
+            <div className="pdp-gallery__frame">
+              <span className="pdp-gallery__test">75mg per tablet</span>
+              <div className="pdp-gallery__sun" aria-hidden="true" />
+              <img src={selected.image} alt={`Kava Karma ${selected.count}-count Mango chewable tablets`} />
+              <span className="pdp-gallery__count">{selected.count} count</span>
+            </div>
+            <div className="pdp-gallery__thumbs" aria-label="Product highlights">
+              <button className="active" type="button"><img src={selected.image} alt="Front of Kava Karma bottle" /></button>
+              <button type="button" aria-label="Mango flavor"><span className="pdp-thumb-mango">Mango</span></button>
+              <button type="button" aria-label="75 milligrams per tablet"><span className="pdp-thumb-dose">75<small>mg</small></span></button>
+            </div>
+          </div>
+
+          <div className="pdp-buybox">
+            <p className="pdp-kicker">Noble kava · Mango chewables</p>
+            <h1 id="product-title">Kava Karma</h1>
+            <p className="pdp-intro">A precisely portioned kava tablet for taking the edge off the day without checking out of the evening.</p>
+
+            <div className="pdp-selection-heading">
+              <span>Choose your size</span>
+              <b>{selected.count} tablets</b>
+            </div>
+            <div className="pdp-variants" role="radiogroup" aria-label="Choose tablet count">
+              {PRODUCT_VARIANTS.map((variant) => (
+                <button
+                  key={variant.id}
+                  type="button"
+                  role="radio"
+                  aria-checked={selected.id === variant.id}
+                  className={selected.id === variant.id ? "selected" : ""}
+                  onClick={() => setSelectedId(variant.id)}
+                >
+                  {variant.badge && <small>{variant.badge}</small>}
+                  <strong>{variant.count}</strong>
+                  <span>ct.</span>
+                  <em>${variant.price.toFixed(2)}</em>
+                </button>
+              ))}
+            </div>
+
+            <div className="pdp-purchase-option">
+              <span className="pdp-radio" aria-hidden="true" />
+              <div><strong>One-time purchase</strong><small>{selected.note}</small></div>
+              <b>${selected.price.toFixed(2)}</b>
+            </div>
+
+            <div className="pdp-actions">
+              <div className="pdp-quantity" aria-label="Quantity selector">
+                <button type="button" aria-label="Decrease quantity" onClick={() => setQuantity((value) => Math.max(1, value - 1))}>−</button>
+                <output aria-live="polite">{quantity}</output>
+                <button type="button" aria-label="Increase quantity" onClick={() => setQuantity((value) => Math.min(10, value + 1))}>+</button>
+              </div>
+              <a className="pdp-checkout" href={checkoutUrl}>Checkout <span>${total}</span></a>
+            </div>
+
+            <div className="pdp-trust" aria-label="Purchase benefits">
+              <div><span>✦</span><b>Free shipping</b><small>On orders over $75</small></div>
+              <div><span>✓</span><b>Quality tested</b><small>Every batch</small></div>
+              <div><span>↺</span><b>30-day returns</b><small>Money-back guarantee</small></div>
+            </div>
+
+            <div className="pdp-details">
+              <details>
+                <summary>Product details <span>+</span></summary>
+                <p>Each Mango-flavored chewable tablet contains 75mg of noble kava root extract. No mixing, straining, or cleaning up afterward.</p>
+              </details>
+              <details>
+                <summary>What’s inside <span>+</span></summary>
+                <p>Kava root extract in a convenient chewable format. No kratom, caffeine, or alcohol.</p>
+              </details>
+              <details>
+                <summary>Safety profile <span>+</span></summary>
+                <p>For adults 18+. Do not combine with alcohol, use before driving, or use while pregnant or nursing. Consult a healthcare provider before use if you take prescription medication.</p>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section className="pdp-benefits" aria-labelledby="pdp-benefits-title">
+          <p className="eyebrow"><span /> Kava, made easy</p>
+          <h2 id="pdp-benefits-title">The unwind you wanted.<br /><em>None of the prep.</em></h2>
+          <div>
+            <article><b>75mg</b><h3>Precisely portioned</h3><p>A consistent serving in every Mango chewable tablet.</p></article>
+            <article><b>01</b><h3>One simple ritual</h3><p>No powder to knead, tea to strain, or cup to clean.</p></article>
+            <article><b>☼</b><h3>Made for evenings</h3><p>A relaxed, social kind of unwind that leaves the night yours.</p></article>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div className="footer-top">
+          <Brand />
+          <p>Mango-flavored kava root extract tablets for softer evenings and calmer company.</p>
+          <a href="https://realbotanicals.com" target="_blank" rel="noreferrer">Real Botanicals ↗</a>
+        </div>
+        <div className="footer-safety">For adults 18+. Do not combine with alcohol. Do not use if you have liver problems, while pregnant or nursing, or before driving. Consult a healthcare provider before use if you take prescription medication.</div>
+      </footer>
+
+      <div className="pdp-mobile-bar">
+        <div><b>{selected.count} count</b><span>${selected.price.toFixed(2)}</span></div>
+        <a href={checkoutUrl}>Checkout · ${total}</a>
+      </div>
+    </div>
+  );
+}
+
+export default function App() {
+  return window.location.pathname.replace(/\/+$/, "") === PRODUCT_PAGE_URL ? <ProductPage /> : <Home />;
 }
