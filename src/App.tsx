@@ -11,8 +11,6 @@ const PRODUCT_VARIANTS = [
   { id: "55100370485567", count: 20, price: 26.99, note: "The regular", badge: "Most popular", image: PRODUCT_IMAGE },
   { id: "55100370518335", count: 50, price: 59.99, note: "Best value", badge: "Best value", image: PRODUCT_IMAGE },
 ] as const;
-const HERO_DESKTOP = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaKarmaLPHero.jpg?v=1786735192";
-const HERO_MOBILE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaKarmaLPMobileHero.jpg?v=1786735192";
 const ROOT_IMAGE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaKarmaRoot.jpg?v=1786735786";
 const TEA_IMAGE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaTea.jpg?v=1786977416";
 const LIFESTYLE_IMAGE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaBottom.jpg?v=1786978542";
@@ -133,7 +131,7 @@ function Home() {
     name: "Kava Karma Tablets",
     brand: { "@type": "Brand", name: "Real Botanicals" },
     url: `${PRODUCT_PAGE_URL}?variant=${DEFAULT_VARIANT_ID}`,
-    image: HERO_DESKTOP,
+    image: "/KavaProductHero.jpg",
     description: "Mango-flavored chewable tablets with 75mg of noble kava root extract per tablet.",
   };
 
@@ -197,30 +195,25 @@ function Home() {
         <section className="product-section section" id="product">
           <div className="section-heading centered">
             <p className="eyebrow"><span /> Kava, made easy</p>
-            <h2>Keep the ritual.<br /><em>Lose the hassle.</em></h2>
-            <p>No powder to knead. No bitter, earthy drink to get through. Just a pocket-friendly Mango chew when the day needs a softer landing.</p>
+            <h2>Kava without the<br /><em>whole kava project.</em></h2>
+            <p>
+              Traditional kava can mean root powder, a strainer bag, cleanup, and an earthy taste that takes some getting used to. Kava Karma puts 75mg of noble kava root extract into a pocket-friendly Mango chewable.
+              <span>No muddy tea. No complicated preparation. No guessing what is in each tablet.</span>
+            </p>
           </div>
           <div className="product-focus">
             <div className="product-image-shell">
               <div className="product-halo" aria-hidden="true" />
-              <picture>
-                <source media="(max-width: 600px)" srcSet={HERO_MOBILE} />
-                <img src={HERO_DESKTOP} alt="Kava Karma product lineup" />
-              </picture>
+              <img className="product-focus-image" src="/KavaProductHero.jpg" alt="Kava Karma Mango chewable tablets on a beach" />
               <span className="product-badge">Mango flavor</span>
             </div>
             <div className="product-copy">
-              <p className="eyebrow"><span /> Choose your size</p>
+              <p className="eyebrow"><span /> Get the vibes</p>
               <h3>Kava Karma <em>tablets</em></h3>
-              <p>Available in 10, 20, and 50-count options, from a first try to a fully stocked calm-down drawer.</p>
-              <div className="size-grid" aria-label="Available sizes">
-                <div><b>10 ct.</b><span>Try it out</span></div>
-                <div className="popular"><small>Most popular</small><b>20 ct.</b><span>The regular</span></div>
-                <div><b>50 ct.</b><span>Best value</span></div>
-              </div>
+              <p>Whether you are trying kava for the first time or making it part of your evening routine, there is a size that fits.</p>
               <ul className="check-list">
                 <li><Icon name="check" />75mg noble kava root extract per tablet</li>
-                <li><Icon name="check" />No kratom, alcohol, or caffeine</li>
+                <li><Icon name="check" />Seven &amp; Alcohol Free</li>
                 <li><Icon name="check" />Made in a GMP-certified U.S. facility</li>
               </ul>
               <ShopLink className="button dark">Shop Kava Karma <Icon name="arrow" /></ShopLink>
