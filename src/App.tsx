@@ -166,7 +166,7 @@ export default function Home() {
           <svg className="card-clip-defs" aria-hidden="true" focusable="false">
             <defs>
               <clipPath id="lifestyle-card-shape" clipPathUnits="objectBoundingBox">
-                <path d="M .07 0 H .75 C .79 0 .795 .035 .80 .08 C .808 .135 .84 .16 .90 .17 C .965 .18 1 .20 1 .24 V .94 C 1 .98 .977 1 .935 1 H .07 C .026 1 0 .977 0 .935 V .07 C 0 .026 .026 0 .07 0 Z" />
+                <path d="M .07 0 H .75 C .79 0 .795 .035 .80 .075 C .795 .12 .805 .145 .84 .165 C .90 .185 1 .185 1 .24 V .94 C 1 .98 .977 1 .935 1 H .07 C .026 1 0 .977 0 .935 V .07 C 0 .026 .026 0 .07 0 Z" />
               </clipPath>
             </defs>
           </svg>
