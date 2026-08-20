@@ -367,8 +367,11 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
   line-height: 1.75;
 }
 
-.story { background: var(--paper); }
-.card-clip-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.story {
+  padding-left: max(28px, calc((100vw - 1350px) / 2));
+  padding-right: max(28px, calc((100vw - 1350px) / 2));
+  background: var(--paper);
+}
 .story-heading { max-width: 850px; }
 .story-heading > p.story-heading__body:last-child {
   max-width: 730px;
@@ -378,14 +381,16 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
   line-height: 1.75;
 }
 .lifestyle-grid {
+  width: min(100%, 1350px);
   margin-top: 58px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  justify-content: center;
   gap: 18px;
 }
 .lifestyle-card {
   min-height: 0;
-  aspect-ratio: 421 / 501;
+  aspect-ratio: 324 / 384;
   position: relative;
   isolation: isolate;
   color: white;
@@ -396,7 +401,8 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
   position: absolute;
   inset: 0;
   overflow: hidden;
-  clip-path: url(#lifestyle-card-shape);
+  -webkit-mask: url("/card-shape-mask.png") center / 100% 100% no-repeat;
+  mask: url("/card-shape-mask.png") center / 100% 100% no-repeat;
   background-color: var(--ocean);
   background-size: cover;
 }
@@ -419,9 +425,9 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
 .lifestyle-card__badge {
   position: absolute;
   z-index: 4;
-  top: 2px;
-  right: 2px;
-  width: 18.5%;
+  top: 0;
+  right: 0;
+  width: 17.5926%;
   height: auto;
   aspect-ratio: 1;
   display: grid;
@@ -586,7 +592,7 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 .sticky-cta { display: none; }
 
 @media (max-width: 1050px) {
-  .lifestyle-grid { grid-template-columns: repeat(2, minmax(0, 421px)); justify-content: center; }
+  .lifestyle-grid { width: min(100%, 666px); grid-template-columns: repeat(2, minmax(0, 1fr)); justify-content: center; }
   .lifestyle-card { min-height: 0; }
   .lifestyle-card h3 { font-size: 23px; }
 }
@@ -669,9 +675,9 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   .fits-copy h2,
   .experience-copy h2,
   .final-cta h2 { font-size: 41px; }
-  .lifestyle-grid { grid-template-columns: minmax(0, 350px); justify-content: center; margin-top: 42px; }
-  .lifestyle-card { min-height: 0; aspect-ratio: 350 / 371; }
-  .lifestyle-card__badge { top: 2px; right: 2px; width: 17.15%; height: auto; }
+  .lifestyle-grid { width: min(100%, 324px); grid-template-columns: 1fr; justify-content: center; margin-top: 42px; }
+  .lifestyle-card { min-height: 0; aspect-ratio: 324 / 384; }
+  .lifestyle-card__badge { top: 0; right: 0; width: 17.5926%; height: auto; }
   .lifestyle-card__content { padding: 32px 24px 28px; }
   .lifestyle-card h3 { font-size: 24px; }
   .lifestyle-card p { font-size: 14px; }

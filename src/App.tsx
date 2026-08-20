@@ -163,13 +163,6 @@ export default function Home() {
         </section>
 
         <section className="story section" id="story">
-          <svg className="card-clip-defs" aria-hidden="true" focusable="false">
-            <defs>
-              <clipPath id="lifestyle-card-shape" clipPathUnits="objectBoundingBox">
-                <path d="M .07 0 H .75 C .79 0 .795 .035 .80 .075 C .795 .12 .805 .145 .84 .165 C .90 .185 1 .185 1 .24 V .94 C 1 .98 .977 1 .935 1 H .07 C .026 1 0 .977 0 .935 V .07 C 0 .026 .026 0 .07 0 Z" />
-              </clipPath>
-            </defs>
-          </svg>
           <div className="section-heading story-heading">
             <p className="eyebrow"><span /> When work ends but your brain doesn’t</p>
             <h2>Relax into the night.<br /><em>Stay in it.</em></h2>
