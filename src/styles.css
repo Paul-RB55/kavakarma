@@ -486,7 +486,7 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
   font-weight: 800;
 }
 .product-copy { padding: 55px 46px; display: flex; flex-direction: column; justify-content: center; }
-.product-copy h3 { margin: 0; color: var(--ocean); text-transform: uppercase; letter-spacing: -.05em; font-size: 43px; line-height: 1; }
+.product-copy h3 { margin: 0; color: var(--ocean); text-transform: uppercase; letter-spacing: -.05em; font-size: 50px; line-height: 1; }
 .product-copy > p:not(.eyebrow):not(.guarantee) { margin: 20px 0 24px; color: var(--muted); line-height: 1.7; }
 .size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
 .size-grid > div {
@@ -692,7 +692,7 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   .product-image-shell { min-height: 470px; }
   .product-image-shell img { object-position: center 75%; }
   .product-copy { padding: 38px 22px 34px; }
-  .product-copy h3 { font-size: 34px; }
+  .product-copy h3 { font-size: 39px; }
   .size-grid { gap: 7px; }
   .size-grid > div { padding-inline: 5px; }
   .fits-evening { padding-top: 80px; padding-bottom: 80px; }

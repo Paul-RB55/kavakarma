@@ -69,28 +69,28 @@ function Header() {
 
 const feelings = [
   {
-    title: "The day softens.",
+    title: "The day softens",
     copy: "A little breathing room between you and everything that wanted your attention.",
     image: "/Daysoftens_Cardimage.jpg",
     icon: "/Daysofticon.svg",
     position: "center",
   },
   {
-    title: "Conversation comes easier.",
+    title: "Conversation comes easier",
     copy: "A calmer way to settle into dinner, friends, or wherever the night takes you.",
     image: "/Conversation_Cardimage.jpg",
     icon: "/Convoicon.svg",
     position: "center",
   },
   {
-    title: "You stay present.",
+    title: "You stay present",
     copy: "Made for unwinding without making the rest of your evening disappear.",
     image: "/staypresent_Cardimage.jpg",
     icon: "/StayPresent.svg",
     position: "center",
   },
   {
-    title: "The ritual stays simple.",
+    title: "The ritual stays simple",
     copy: "One chewable tablet. No mixing, straining, or cleaning up afterward.",
     image: "/Ritualsimple_Cardimage.jpg",
     icon: "/ritualicon.svg",
@@ -142,7 +142,7 @@ function Home() {
         <section className="hero hero-editorial">
           <img className="hero-editorial__palms" src="/Palmtreesides.png" alt="" aria-hidden="true" />
           <div className="hero-editorial__stage">
-            <h1 className="hero-editorial__headline" aria-label="Good vibes. Good karma.">
+            <h1 className="hero-editorial__headline" aria-label="Good vibes Good karma">
               <span className="hero-editorial__phrase hero-editorial__phrase--left">
                 <span className="orange">Good</span>
                 <span>Vibes</span>
@@ -173,7 +173,7 @@ function Home() {
         <section className="story section" id="story">
           <div className="section-heading story-heading">
             <p className="eyebrow"><span /> When work ends but your brain doesn’t</p>
-            <h2>Relax into the night.<br /><em>Stay in it.</em></h2>
+            <h2>Relax into the night<br /><em>Stay in it</em></h2>
             <p className="story-heading__body">
               Kava is known for a relaxed, social kind of unwind. The edge comes off, the day feels farther away, and you still have an evening left to enjoy.
             </p>
@@ -195,7 +195,7 @@ function Home() {
         <section className="product-section section" id="product">
           <div className="section-heading centered">
             <p className="eyebrow"><span /> Kava, made easy</p>
-            <h2>Kava without the<br /><em>whole kava project.</em></h2>
+            <h2>Skip the process<br /><em>Keep the kava</em></h2>
             <p>
               Traditional kava can mean root powder, a strainer bag, cleanup, and an earthy taste that takes some getting used to. Kava Karma puts 75mg of noble kava root extract into a pocket-friendly Mango chewable.
               <span>No muddy tea. No complicated preparation. No guessing what is in each tablet.</span>
@@ -209,7 +209,7 @@ function Home() {
             </div>
             <div className="product-copy">
               <p className="eyebrow"><span /> Get the vibes</p>
-              <h3>Kava Karma <em>tablets</em></h3>
+              <h3>Kava Karma</h3>
               <p>Whether you are trying kava for the first time or making it part of your evening routine, there is a size that fits.</p>
               <ul className="check-list">
                 <li><Icon name="check" />75mg noble kava root extract per tablet</li>
@@ -225,13 +225,13 @@ function Home() {
         <section className="fits-evening section">
           <div className="fits-copy">
             <p className="eyebrow"><span /> Bring the calm with you</p>
-            <h2>Fits into<br /><em>your evening.</em></h2>
+            <h2>Fits into<br /><em>your evening</em></h2>
             <p>For the after-work exhale, dinner with friends, or the quiet hour when the house finally stops asking questions.</p>
             <ul>
-              <li><span>☼</span><div><b>After work.</b><p>Let the day end before bedtime has to do it for you.</p></div></li>
-              <li><span>◎</span><div><b>With friends.</b><p>Keep the social ritual without building the night around another round.</p></div></li>
-              <li><span>✦</span><div><b>At home.</b><p>Music, a book, a bath—whatever turns the noise down.</p></div></li>
-              <li><span>⌁</span><div><b>On the go.</b><p>A small format that fits where a bag of powder never would.</p></div></li>
+              <li><span>☼</span><div><b>After work</b><p>Let the day end before bedtime has to do it for you.</p></div></li>
+              <li><span>◎</span><div><b>With friends</b><p>Keep the social ritual without building the night around another round.</p></div></li>
+              <li><span>✦</span><div><b>At home</b><p>Music, a book, a bath—whatever turns the noise down.</p></div></li>
+              <li><span>⌁</span><div><b>On the go</b><p>A small format that fits where a bag of powder never would.</p></div></li>
             </ul>
             <ShopLink>Shop Kava Karma <Icon name="arrow" /></ShopLink>
           </div>
@@ -242,7 +242,7 @@ function Home() {
           <div className="experience-image"><img src={TEA_IMAGE} alt="Traditional kava and Kava Karma tablet format" /></div>
           <div className="experience-copy">
             <p className="eyebrow"><span /> Same root. New ritual.</p>
-            <h2>Calm should not<br /><em>need a recipe.</em></h2>
+            <h2>Calm should not<br /><em>need a recipe</em></h2>
             <p>Traditional kava can be a beautiful ritual. Kava Karma keeps the part people come for and removes the straining, cleanup, and muddy-earth taste.</p>
             <ul>
               <li><Icon name="check" />Mango flavor instead of bitter, earthy tea.</li>
@@ -256,7 +256,7 @@ function Home() {
         <section className="faq section" id="faq">
           <div className="section-heading centered">
             <p className="eyebrow"><span /> The basics</p>
-            <h2>Questions,<br /><em>answered.</em></h2>
+            <h2>Questions,<br /><em>answered</em></h2>
           </div>
           <div className="faq-list">
             {faqs.map(([question, answer]) => (
@@ -270,7 +270,7 @@ function Home() {
 
         <section className="final-cta section">
           <p className="eyebrow"><span /> Your evening can feel different</p>
-          <h2>Turn the volume down.<br /><em>Keep the good part.</em></h2>
+          <h2>Turn the volume down<br /><em>Keep the good part</em></h2>
           <p>Good vibes are closer than a complicated kava ritual makes them look.</p>
           <ShopLink>Shop Kava Karma <Icon name="arrow" /></ShopLink>
         </section>
@@ -408,7 +408,7 @@ function ProductPage() {
 
         <section className="pdp-benefits" aria-labelledby="pdp-benefits-title">
           <p className="eyebrow"><span /> Kava, made easy</p>
-          <h2 id="pdp-benefits-title">The unwind you wanted.<br /><em>None of the prep.</em></h2>
+          <h2 id="pdp-benefits-title">The unwind you wanted<br /><em>None of the prep</em></h2>
           <div>
             <article><b>75mg</b><h3>Precisely portioned</h3><p>A consistent serving in every Mango chewable tablet.</p></article>
             <article><b>01</b><h3>One simple ritual</h3><p>No powder to knead, tea to strain, or cup to clean.</p></article>
