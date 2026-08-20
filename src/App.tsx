@@ -13,7 +13,7 @@ const PRODUCT_VARIANTS = [
 ] as const;
 const ROOT_IMAGE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaKarmaRoot.jpg?v=1786735786";
 const TEA_IMAGE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaTea.jpg?v=1786977416";
-const LIFESTYLE_IMAGE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaBottom.jpg?v=1786978542";
+const LIFESTYLE_IMAGE = "/NoAlcohol.jpg";
 
 type IconName = "arrow" | "bag" | "check" | "menu" | "close" | "leaf";
 
@@ -224,18 +224,18 @@ function Home() {
 
         <section className="fits-evening section">
           <div className="fits-copy">
-            <p className="eyebrow"><span /> Bring the calm with you</p>
-            <h2>Fits into<br /><em>your evening</em></h2>
-            <p>For the after-work exhale, dinner with friends, or the quiet hour when the house finally stops asking questions.</p>
+            <p className="eyebrow"><span /> A different kind of evening</p>
+            <h2>Not every night needs<br /><em>to be a drinking night</em></h2>
+            <p>Sometimes you want something that marks the end of the day without making alcohol the center of it. Kava Karma gives you an easy ritual for after work, dinner with friends, or a quiet night at home.</p>
             <ul>
-              <li><span>☼</span><div><b>After work</b><p>Let the day end before bedtime has to do it for you.</p></div></li>
+              <li><span>☼</span><div><b>After work</b><p>Close the laptop and give the evening a chance to begin.</p></div></li>
               <li><span>◎</span><div><b>With friends</b><p>Keep the social ritual without building the night around another round.</p></div></li>
-              <li><span>✦</span><div><b>At home</b><p>Music, a book, a bath—whatever turns the noise down.</p></div></li>
-              <li><span>⌁</span><div><b>On the go</b><p>A small format that fits where a bag of powder never would.</p></div></li>
+              <li><span>✦</span><div><b>At home</b><p>Dinner, music, a book, a bath or whatever helps the day loosen its grip.</p></div></li>
+              <li><span>⌁</span><div><b>On the go</b><p>A small, portable format that fits where a bag of kava powder never would.</p></div></li>
             </ul>
             <ShopLink>Shop Kava Karma <Icon name="arrow" /></ShopLink>
           </div>
-          <div className="fits-image"><img src={LIFESTYLE_IMAGE} alt="Kava Karma in a relaxed evening setting" /></div>
+          <div className="fits-image"><img src={LIFESTYLE_IMAGE} alt="Friends enjoying a relaxed evening together at the beach" /></div>
         </section>
 
         <section className="experience section">
