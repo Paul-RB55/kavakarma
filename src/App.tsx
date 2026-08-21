@@ -11,11 +11,11 @@ const PRODUCT_VARIANTS = [
   { id: "55100370485567", count: 20, price: 26.99, note: "The regular", badge: "Most popular", image: PRODUCT_IMAGE },
   { id: "55100370518335", count: 50, price: 59.99, note: "Best value", badge: "Best value", image: PRODUCT_IMAGE },
 ] as const;
-const ROOT_IMAGE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaKarmaRoot.jpg?v=1786735786";
+const ROOT_IMAGE = "/KavaKarmaRoot.jpg";
 const TEA_IMAGE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaTea.jpg?v=1786977416";
 const LIFESTYLE_IMAGE = "/NoAlcohol.jpg";
 
-type IconName = "arrow" | "bag" | "check" | "menu" | "close" | "leaf";
+type IconName = "arrow" | "bag" | "check" | "menu" | "close" | "leaf" | "moon" | "users" | "home" | "pin";
 
 function Icon({ name }: { name: IconName }) {
   const paths: Record<IconName, React.ReactNode> = {
@@ -25,6 +25,10 @@ function Icon({ name }: { name: IconName }) {
     menu: <><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></>,
     close: <><path d="m6 6 12 12" /><path d="m18 6-12 12" /></>,
     leaf: <><path d="M20 4C12 4 6 8 6 15c0 3 2 5 5 5 7 0 9-8 9-16Z" /><path d="M4 21c2-6 6-10 12-13" /></>,
+    moon: <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" />,
+    users: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></>,
+    home: <><path d="m3 11 9-8 9 8" /><path d="M5 10v11h14V10M9 21v-7h6v7" /></>,
+    pin: <><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></>,
   };
   return <svg viewBox="0 0 24 24" aria-hidden="true">{paths[name]}</svg>;
 }
@@ -69,33 +73,46 @@ function Header() {
 
 const feelings = [
   {
-    title: "The day softens",
-    copy: "A little breathing room between you and everything that wanted your attention.",
+    title: "Unwind",
+    copy: "Ease out of go-mode once the day’s last task is done.",
     image: "/Daysoftens_Cardimage.jpg",
     icon: "/Daysofticon.svg",
     position: "center",
   },
   {
-    title: "Conversation comes easier",
-    copy: "A calmer way to settle into dinner, friends, or wherever the night takes you.",
-    image: "/Conversation_Cardimage.jpg",
-    icon: "/Convoicon.svg",
-    position: "center",
-  },
-  {
-    title: "You stay present",
-    copy: "Made for unwinding without making the rest of your evening disappear.",
+    title: "Stay present",
+    copy: "Settle down without giving up the rest of your evening.",
     image: "/staypresent_Cardimage.jpg",
     icon: "/StayPresent.svg",
     position: "center",
   },
   {
-    title: "The ritual stays simple",
-    copy: "One chewable tablet. No mixing, straining, or cleaning up afterward.",
+    title: "Feel social",
+    copy: "An easy fit for dinner, conversation, and low-key plans.",
+    image: "/Conversation_Cardimage.jpg",
+    icon: "/Convoicon.svg",
+    position: "center",
+  },
+  {
+    title: "Keep it simple",
+    copy: "One mango chewable without the mixing, straining, or cleanup.",
     image: "/Ritualsimple_Cardimage.jpg",
     icon: "/ritualicon.svg",
     position: "center",
   },
+];
+
+const occasions = [
+  { icon: "moon" as const, title: "After work", copy: "Close the laptop, change gears, and give the day a clear ending." },
+  { icon: "users" as const, title: "Dinner & friends", copy: "A relaxed, alcohol-free option for nights when you still want to be part of the moment." },
+  { icon: "home" as const, title: "At home", copy: "Music, gaming, dinner, the couch—whatever your evening looks like, Kava Karma fits without turning it into an event." },
+  { icon: "pin" as const, title: "On the go", copy: "A small, portable format that is ready whenever your evening begins." },
+];
+
+const kavaPoints = [
+  { title: "South Pacific origin", copy: "A long tradition centered around gathering, conversation, and connection." },
+  { title: "Noble kava root", copy: "Made exclusively with noble kava root extract." },
+  { title: "No traditional prep", copy: "No powder, straining, mixing, or earthy cup of tea." },
 ];
 
 const faqs = [
@@ -159,23 +176,24 @@ function Home() {
 
             <img className="hero-editorial__yoga" src="/YogaPose.png" alt="Woman seated in a calm meditation pose" />
 
-            <ShopLink className="button hero-editorial__shop">Shop Kava Karma</ShopLink>
+            <ShopLink className="button hero-editorial__shop">Try Kava Karma</ShopLink>
             <p className="hero-editorial__description">
-              Turn the volume down without checking out. A precisely portioned tablet made for easier evenings and calmer company.
+              An easy, alcohol-free way to leave work mode behind. Kava Karma delivers 75mg of noble kava root extract in a mango-flavored chewable made for unwinding into the rest of your evening.
+              <strong>Unwind. Stay in the moment.</strong>
             </p>
           </div>
         </section>
 
         <section className="trust-strip" aria-label="Product features">
-          {["75mg kava root extract", "Mango chewable", "No mixing or tea", "Third-party tested"].map((item) => <div key={item}><span />{item}</div>)}
+          {["75mg noble kava root extract", "Mango chewable", "Third-party lab tested", "Zero alcohol"].map((item) => <div key={item}><span />{item}</div>)}
         </section>
 
         <section className="story section" id="story">
           <div className="section-heading story-heading">
-            <p className="eyebrow"><span /> When work ends but your brain doesn’t</p>
-            <h2>Relax into the night<br /><em>Stay in it</em></h2>
+            <p className="eyebrow"><span /> What everyone wants to know</p>
+            <h2>How does Kava Karma<br /><em>feel?</em></h2>
             <p className="story-heading__body">
-              Kava is known for a relaxed, social kind of unwind. The edge comes off, the day feels farther away, and you still have an evening left to enjoy.
+              Kava is often described as relaxed, social, and present. Kava Karma is made for a lighter kind of wind-down. Less checking out and more leaving the workday behind.
             </p>
           </div>
           <div className="lifestyle-grid">
@@ -190,6 +208,39 @@ function Home() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section className="occasions-section section" aria-labelledby="occasions-title">
+          <div className="section-heading centered occasions-heading">
+            <p className="eyebrow"><span /> Made for real evenings</p>
+            <h2 id="occasions-title">Where Kava Karma<br /><em>fits</em></h2>
+            <p>No special occasion or complicated routine required. Reach for Kava Karma when you want an easier transition into whatever comes after the workday.</p>
+          </div>
+          <div className="occasion-grid">
+            {occasions.map((occasion, index) => (
+              <article className="occasion-card" key={occasion.title}>
+                <span className={index === 1 ? "occasion-icon occasion-icon--warm" : "occasion-icon"} aria-hidden="true"><Icon name={occasion.icon} /></span>
+                <h3>{occasion.title}</h3>
+                <p>{occasion.copy}</p>
+              </article>
+            ))}
+          </div>
+          <ShopLink className="button occasions-cta">Try Kava Karma <Icon name="arrow" /></ShopLink>
+        </section>
+
+        <section className="kava-origin section" aria-labelledby="kava-origin-title">
+          <div className="kava-origin__copy">
+            <p className="eyebrow"><span /> A South Pacific root</p>
+            <h2 id="kava-origin-title">What is kava,<br /><em>anyway?</em></h2>
+            <p>Kava comes from the root of Piper methysticum, a South Pacific plant traditionally shared around conversation, ceremony, and community. Its naturally occurring compounds are called kavalactones.</p>
+            <p>Kava Karma puts that traditional botanical into a simple 75mg noble kava extract chewable—mango flavored, portable, and ready when the workday is done.</p>
+            <div className="kava-origin__points">
+              {kavaPoints.map((point) => (
+                <article key={point.title}><h3>{point.title}</h3><p>{point.copy}</p></article>
+              ))}
+            </div>
+          </div>
+          <div className="kava-origin__image"><img src={ROOT_IMAGE} alt="Kava root and ground kava powder" /></div>
         </section>
 
         <section className="product-section section" id="product">
@@ -224,14 +275,13 @@ function Home() {
 
         <section className="fits-evening section">
           <div className="fits-copy">
-            <p className="eyebrow"><span /> A different kind of evening</p>
-            <h2>Not every night needs<br /><em>to be a drinking night</em></h2>
-            <p>Sometimes you want something that marks the end of the day without making alcohol the center of it. Kava Karma gives you an easy ritual for after work, dinner with friends, or a quiet night at home.</p>
+            <p className="eyebrow"><span /> Another way to unwind</p>
+            <h2>Keep the night<br /><em>Skip the drink</em></h2>
+            <p>You do not have to swear off alcohol to want another option sometimes. Kava Karma fits the nights when you want to unwind or be social without making a drink the center of the evening.</p>
             <ul>
-              <li><span>☼</span><div><b>After work</b><p>Close the laptop and give the evening a chance to begin.</p></div></li>
-              <li><span>◎</span><div><b>With friends</b><p>Keep the social ritual without building the night around another round.</p></div></li>
-              <li><span>✦</span><div><b>At home</b><p>Dinner, music, a book, a bath or whatever helps the day loosen its grip.</p></div></li>
-              <li><span>⌁</span><div><b>On the go</b><p>A small, portable format that fits where a bag of kava powder never would.</p></div></li>
+              <li><span>◎</span><div><b>A lighter kind of social</b><p>Kava has a long tradition around conversation and community. People commonly describe the experience as relaxed, open, and present.</p></div></li>
+              <li><span>☼</span><div><b>The evening stays yours</b><p>Reach for it after work, with friends, or during a quiet night at home.</p></div></li>
+              <li><span>✦</span><div><b>No big declaration</b><p>No cocktail to mix and no lifestyle change to announce. Just another alcohol-free option when it suits you.</p></div></li>
             </ul>
             <ShopLink>Shop Kava Karma <Icon name="arrow" /></ShopLink>
           </div>
@@ -241,22 +291,24 @@ function Home() {
         <section className="experience section">
           <div className="experience-image"><img src={TEA_IMAGE} alt="Traditional kava and Kava Karma tablet format" /></div>
           <div className="experience-copy">
-            <p className="eyebrow"><span /> Same root. New ritual.</p>
-            <h2>Calm should not<br /><em>need a recipe</em></h2>
-            <p>Traditional kava can be a beautiful ritual. Kava Karma keeps the part people come for and removes the straining, cleanup, and muddy-earth taste.</p>
+            <p className="eyebrow"><span /> The Real Botanicals standard</p>
+            <h2>Plant-based<br /><em>Proof-backed</em></h2>
+            <p>Natural wellness still deserves modern quality control. Every batch of Kava Karma is made in a GMP-certified U.S. facility and independently tested so you can see exactly what is inside each tablet.</p>
             <ul>
-              <li><Icon name="check" />Mango flavor instead of bitter, earthy tea.</li>
-              <li><Icon name="check" />Precisely portioned and ready when you are.</li>
-              <li><Icon name="check" />Third-party tested every batch.</li>
+              <li><Icon name="check" />Noble kava root extract</li>
+              <li><Icon name="check" />Third-party tested every batch</li>
+              <li><Icon name="check" />GMP-certified U.S. manufacturing</li>
+              <li><Icon name="check" />Clearly listed ingredients</li>
             </ul>
-            <ShopLink>Find your calm <Icon name="arrow" /></ShopLink>
+            <ShopLink>Shop Kava Karma <Icon name="arrow" /></ShopLink>
           </div>
         </section>
 
         <section className="faq section" id="faq">
           <div className="section-heading centered">
-            <p className="eyebrow"><span /> The basics</p>
-            <h2>Questions,<br /><em>answered</em></h2>
+            <p className="eyebrow"><span /> Kava Karma FAQs</p>
+            <h2>Start with<br /><em>the basics</em></h2>
+            <p>You do not need to become a kava expert before trying it. These are the questions worth answering first.</p>
           </div>
           <div className="faq-list">
             {faqs.map(([question, answer]) => (
@@ -269,10 +321,11 @@ function Home() {
         </section>
 
         <section className="final-cta section">
-          <p className="eyebrow"><span /> Your evening can feel different</p>
-          <h2>Turn the volume down<br /><em>Keep the good part</em></h2>
-          <p>Good vibes are closer than a complicated kava ritual makes them look.</p>
-          <ShopLink>Shop Kava Karma <Icon name="arrow" /></ShopLink>
+          <p className="eyebrow final-cta__eyebrow"><span /><b>Good vibes<br />Good karma</b></p>
+          <h2>Ready to leave<br /><em>work mode behind?</em></h2>
+          <p>75mg of noble kava root extract. Mango chewable. Zero alcohol. An easier way to settle into the rest of your evening.</p>
+          <ShopLink>Try Kava Karma <Icon name="arrow" /></ShopLink>
+          <small>30-day money-back guarantee</small>
         </section>
       </main>
 
