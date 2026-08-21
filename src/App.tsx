@@ -105,7 +105,7 @@ const feelings = [
 const occasions = [
   { icon: "moon" as const, title: "After work", copy: "Close the laptop, change gears, and give the day a clear ending." },
   { icon: "users" as const, title: "Dinner & friends", copy: "A relaxed, alcohol-free option for nights when you still want to be part of the moment." },
-  { icon: "home" as const, title: "At home", copy: "Music, gaming, dinner, the couch—whatever your evening looks like, Kava Karma fits without turning it into an event." },
+  { icon: "home" as const, title: "At home", copy: "Music, gaming, dinner, the couch or whatever your evening looks like, Kava Karma fits without turning it into an event." },
   { icon: "pin" as const, title: "On the go", copy: "A small, portable format that is ready whenever your evening begins." },
 ];
 
@@ -178,7 +178,7 @@ function Home() {
 
             <ShopLink className="button hero-editorial__shop">Try Kava Karma</ShopLink>
             <p className="hero-editorial__description">
-              An easy, alcohol-free way to leave work mode behind. Kava Karma delivers 75mg of noble kava root extract in a mango-flavored chewable made for unwinding into the rest of your evening.
+              An easy, alcohol-free way to leave work mode behind with noble kava root extract.
               <strong>Unwind. Stay in the moment.</strong>
             </p>
           </div>
