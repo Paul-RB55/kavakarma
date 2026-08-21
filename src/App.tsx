@@ -12,7 +12,7 @@ const PRODUCT_VARIANTS = [
   { id: "55100370518335", count: 50, price: 59.99, note: "Best value", badge: "Best value", image: PRODUCT_IMAGE },
 ] as const;
 const ROOT_IMAGE = "/KavaKarmaRoot.jpg";
-const TEA_IMAGE = "https://cdn.shopify.com/s/files/1/0872/0672/3903/files/KavaTea.jpg?v=1786977416";
+const TEA_IMAGE = "/Labverify.jpg";
 const LIFESTYLE_IMAGE = "/NoAlcohol.jpg";
 
 type IconName = "arrow" | "bag" | "check" | "menu" | "close" | "leaf" | "moon" | "users" | "home" | "pin";
@@ -289,7 +289,7 @@ function Home() {
         </section>
 
         <section className="experience section">
-          <div className="experience-image"><img src={TEA_IMAGE} alt="Traditional kava and Kava Karma tablet format" /></div>
+          <div className="experience-image"><img src={TEA_IMAGE} alt="Independent laboratory testing in a modern quality-control facility" /></div>
           <div className="experience-copy">
             <p className="eyebrow"><span /> The Real Botanicals standard</p>
             <h2>Plant-based<br /><em>Proof-backed</em></h2>
