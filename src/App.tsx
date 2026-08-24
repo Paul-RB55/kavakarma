@@ -73,13 +73,15 @@ function Header() {
 
 const feelings = [
   {
+    occasion: "After work",
     title: "Unwind",
-    copy: "Ease out of work mode.",
+    copy: "Close the laptop, change gears, and ease out of work mode.",
     image: "/Daysoftens_Cardimage.jpg",
     icon: "/Daysofticon.svg",
     position: "center",
   },
   {
+    occasion: "At home",
     title: "Stay present",
     copy: "Wind down without checking out of your evening.",
     image: "/staypresent_Cardimage.jpg",
@@ -87,18 +89,13 @@ const feelings = [
     position: "center",
   },
   {
+    occasion: "Dinner & friends",
     title: "Feel social",
-    copy: "Made for conversation, connection and whatever comes next.",
+    copy: "A relaxed, alcohol-free option for conversation, connection, and whatever comes next.",
     image: "/Conversation_Cardimage.jpg",
     icon: "/Convoicon.svg",
     position: "center",
   },
-];
-
-const occasions = [
-  { icon: "moon" as const, title: "After work", copy: "Close the laptop, change gears, and give the day a clear ending." },
-  { icon: "users" as const, title: "Dinner & friends", copy: "A relaxed, alcohol-free option for nights when you still want to be part of the moment." },
-  { icon: "home" as const, title: "At home", copy: "Music, gaming, dinner, the couch or whatever your evening looks like, Kava Karma fits without turning it into an event." },
 ];
 
 const kavaPoints = [
@@ -182,17 +179,21 @@ function Home() {
 
         <section className="story section" id="story">
           <div className="section-heading story-heading">
-            <p className="eyebrow"><span /> What everyone wants to know</p>
+            <p className="eyebrow"><span /> Made for real evenings</p>
             <h2>How does Kava Karma<br /><em>feel?</em></h2>
             <p className="story-heading__body">
-              Kava is often described as relaxed, social, and present. Kava Karma is made for a lighter kind of wind-down. Less checking out and more leaving the workday behind.
+              Kava is often described as relaxed, social, and present. Kava Karma brings that lighter kind of wind-down into the moments that make up a real evening.
             </p>
           </div>
           <div className="lifestyle-grid">
             {feelings.map((item) => (
               <article className="lifestyle-card" key={item.title}>
                 <div className="lifestyle-card__surface" style={{ backgroundImage: `url("${item.image}")`, backgroundPosition: item.position }}>
-                  <div className="lifestyle-card__content"><h3>{item.title}</h3><p>{item.copy}</p></div>
+                  <div className="lifestyle-card__content">
+                    <span className="lifestyle-card__occasion">{item.occasion}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.copy}</p>
+                  </div>
                 </div>
                 <span className="lifestyle-card__badge">
                   <img src={item.icon} alt="" aria-hidden="true" />
@@ -200,24 +201,7 @@ function Home() {
               </article>
             ))}
           </div>
-        </section>
-
-        <section className="occasions-section section" aria-labelledby="occasions-title">
-          <div className="section-heading centered occasions-heading">
-            <p className="eyebrow"><span /> Made for real evenings</p>
-            <h2 id="occasions-title">Where Kava Karma<br /><em>fits</em></h2>
-            <p>No special occasion or complicated routine required. Reach for Kava Karma when you want an easier transition into whatever comes after the workday.</p>
-          </div>
-          <div className="occasion-grid">
-            {occasions.map((occasion, index) => (
-              <article className="occasion-card" key={occasion.title}>
-                <span className={index === 1 ? "occasion-icon occasion-icon--warm" : "occasion-icon"} aria-hidden="true"><Icon name={occasion.icon} /></span>
-                <h3>{occasion.title}</h3>
-                <p>{occasion.copy}</p>
-              </article>
-            ))}
-          </div>
-          <ShopLink className="button occasions-cta">Try Kava Karma <Icon name="arrow" /></ShopLink>
+          <ShopLink className="button story-cta">Try Kava Karma <Icon name="arrow" /></ShopLink>
         </section>
 
         <section className="kava-origin section" aria-labelledby="kava-origin-title">
