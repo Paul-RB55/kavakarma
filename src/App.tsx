@@ -74,30 +74,23 @@ function Header() {
 const feelings = [
   {
     title: "Unwind",
-    copy: "Ease out of go-mode once the day’s last task is done.",
+    copy: "Ease out of work mode.",
     image: "/Daysoftens_Cardimage.jpg",
     icon: "/Daysofticon.svg",
     position: "center",
   },
   {
     title: "Stay present",
-    copy: "Settle down without giving up the rest of your evening.",
+    copy: "Wind down without checking out of your evening.",
     image: "/staypresent_Cardimage.jpg",
     icon: "/StayPresent.svg",
     position: "center",
   },
   {
     title: "Feel social",
-    copy: "An easy fit for dinner, conversation, and low-key plans.",
+    copy: "Made for conversation, connection and whatever comes next.",
     image: "/Conversation_Cardimage.jpg",
     icon: "/Convoicon.svg",
-    position: "center",
-  },
-  {
-    title: "Keep it simple",
-    copy: "One mango chewable without the mixing, straining, or cleanup.",
-    image: "/Ritualsimple_Cardimage.jpg",
-    icon: "/ritualicon.svg",
     position: "center",
   },
 ];
@@ -106,7 +99,6 @@ const occasions = [
   { icon: "moon" as const, title: "After work", copy: "Close the laptop, change gears, and give the day a clear ending." },
   { icon: "users" as const, title: "Dinner & friends", copy: "A relaxed, alcohol-free option for nights when you still want to be part of the moment." },
   { icon: "home" as const, title: "At home", copy: "Music, gaming, dinner, the couch or whatever your evening looks like, Kava Karma fits without turning it into an event." },
-  { icon: "pin" as const, title: "On the go", copy: "A small, portable format that is ready whenever your evening begins." },
 ];
 
 const kavaPoints = [

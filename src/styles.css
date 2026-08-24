@@ -381,12 +381,12 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
   line-height: 1.75;
 }
 .lifestyle-grid {
-  width: min(100%, 1350px);
+  width: min(100%, 1020px);
   margin-top: 58px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   justify-content: center;
-  gap: 18px;
+  gap: 24px;
 }
 .lifestyle-card {
   min-height: 0;
@@ -451,11 +451,11 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
 }
 .occasions-heading { max-width: 820px; }
 .occasion-grid {
-  width: min(100%, 1180px);
+  width: min(100%, 1040px);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
 }
 .occasion-card {
   min-height: 255px;
@@ -717,10 +717,10 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 .sticky-cta { display: none; }
 
 @media (max-width: 1050px) {
-  .lifestyle-grid { width: min(100%, 666px); grid-template-columns: repeat(2, minmax(0, 1fr)); justify-content: center; }
+  .lifestyle-grid { width: min(100%, 960px); grid-template-columns: repeat(3, minmax(0, 1fr)); justify-content: center; }
   .lifestyle-card { min-height: 0; }
   .lifestyle-card h3 { font-size: 23px; }
-  .occasion-grid { max-width: 760px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .occasion-grid { max-width: 920px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
