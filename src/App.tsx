@@ -224,8 +224,7 @@ function Home() {
           <div className="kava-origin__copy">
             <p className="eyebrow"><span /> A South Pacific root</p>
             <h2 id="kava-origin-title">What is kava,<br /><em>anyway?</em></h2>
-            <p>Kava comes from the root of Piper methysticum, a South Pacific plant traditionally shared around conversation, ceremony, and community. Its naturally occurring compounds are called kavalactones.</p>
-            <p>Kava Karma puts that traditional botanical into a simple 75mg noble kava extract chewable—mango flavored, portable, and ready when the workday is done.</p>
+            <p>Kava is a South Pacific root traditionally shared around conversation and community. Kava Karma brings that tradition into a simple extract chewable.</p>
             <div className="kava-origin__points">
               {kavaPoints.map((point) => (
                 <article key={point.title}><h3>{point.title}</h3><p>{point.copy}</p></article>

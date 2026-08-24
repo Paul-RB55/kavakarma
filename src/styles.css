@@ -382,7 +382,7 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
 }
 .lifestyle-grid {
   width: min(100%, 1020px);
-  margin-top: 58px;
+  margin: 58px auto 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   justify-content: center;
@@ -499,7 +499,9 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
   display: grid;
   grid-template-columns: 1.06fr .94fr;
   align-items: center;
-  gap: 58px;
+  gap: 44px;
+  padding-top: 88px;
+  padding-bottom: 88px;
   color: white;
   background:
     radial-gradient(circle at 84% 82%, rgba(0,105,174,.96) 0%, rgba(54,163,207,.72) 28%, transparent 52%),
@@ -830,6 +832,7 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   .fits-copy > p:not(.eyebrow),
   .fits-copy li p { color: #edf6f8; }
   .kava-origin { text-align: center; }
+  .kava-origin { padding-top: 64px; padding-bottom: 64px; }
   .kava-origin::before { background: rgba(7,38,55,.12); }
   .kava-origin::after {
     opacity: .2;
@@ -1742,6 +1745,51 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
     font-size: 10px;
     font-weight: 800;
   }
+}
+
+/* One-step mobile type lift for the landing page */
+@media (max-width: 600px) {
+  .site-shell:not(.product-page) .announcement { font-size: 9px; }
+  .site-shell:not(.product-page) .eyebrow { font-size: 12px; }
+  .site-shell:not(.product-page) .trust-strip div { font-size: 11px; }
+  .site-shell:not(.product-page) .section-heading h2,
+  .site-shell:not(.product-page) .fits-copy h2,
+  .site-shell:not(.product-page) .experience-copy h2,
+  .site-shell:not(.product-page) .final-cta h2,
+  .site-shell:not(.product-page) .kava-origin__copy h2 { font-size: 42px; }
+  .site-shell:not(.product-page) .section-heading > p:last-child,
+  .site-shell:not(.product-page) .story-heading > p.story-heading__body:last-child { font-size: 17px; }
+  .site-shell:not(.product-page) .lifestyle-card h3 { font-size: 25px; }
+  .site-shell:not(.product-page) .lifestyle-card p { font-size: 15px; }
+  .site-shell:not(.product-page) .occasion-card h3 { font-size: 20px; }
+  .site-shell:not(.product-page) .occasion-card p { font-size: 15px; }
+  .site-shell:not(.product-page) .kava-origin__copy > p:not(.eyebrow) { font-size: 15px; }
+  .site-shell:not(.product-page) .kava-origin__points h3 { font-size: 13px; }
+  .site-shell:not(.product-page) .kava-origin__points p { font-size: 13px; }
+  .site-shell:not(.product-page) .product-copy h3 { font-size: 40px; }
+  .site-shell:not(.product-page) .product-copy > p:not(.eyebrow):not(.guarantee) { font-size: 17px; }
+  .site-shell:not(.product-page) .check-list li { font-size: 14px; }
+  .site-shell:not(.product-page) .guarantee { font-size: 12px; }
+  .site-shell:not(.product-page) .fits-copy > p:not(.eyebrow) { font-size: 17px; }
+  .site-shell:not(.product-page) .fits-copy li b { font-size: 16px; }
+  .site-shell:not(.product-page) .fits-copy li p { font-size: 14px; }
+  .site-shell:not(.product-page) .experience-copy > p:not(.eyebrow),
+  .site-shell:not(.product-page) .experience-copy li { font-size: 17px; }
+  .site-shell:not(.product-page) .faq summary { font-size: 17px; }
+  .site-shell:not(.product-page) .faq details p { font-size: 17px; }
+  .site-shell:not(.product-page) .final-cta > p:not(.eyebrow) { font-size: 17px; }
+  .site-shell:not(.product-page) .final-cta small { font-size: 12px; }
+  .site-shell:not(.product-page) .button { font-size: 12px; }
+  .site-shell:not(.product-page) .hero.hero-editorial h1.hero-editorial__headline { font-size: 79px; }
+  .site-shell:not(.product-page) .hero-editorial__phrase--right { font-size: 83px; }
+  .site-shell:not(.product-page) .hero-editorial__description { font-size: 15px; }
+  .site-shell:not(.product-page) .hero-editorial__description strong { font-size: 11px; }
+  .site-shell:not(.product-page) .footer-top p { font-size: 17px; }
+  .site-shell:not(.product-page) .footer-safety { font-size: 12px; }
+  .site-shell:not(.product-page) .footer-bottom { font-size: 11px; }
+  .site-shell:not(.product-page) .sticky-cta b { font-size: 14px; }
+  .site-shell:not(.product-page) .sticky-cta span,
+  .site-shell:not(.product-page) .sticky-cta .button { font-size: 11px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
