@@ -146,30 +146,24 @@ function Home() {
       <Header />
       <main>
         <section className="hero hero-editorial">
-          <img className="hero-editorial__palms" src="/Palmtreesides.png" alt="" aria-hidden="true" />
+          <picture className="hero-editorial__background" aria-hidden="true">
+            <source media="(max-width: 600px)" srcSet="/MobilePoolBackground.jpg" />
+            <img src="/DesktopPoolBackground.jpg" alt="" />
+          </picture>
+          <div className="hero-editorial__shade" aria-hidden="true" />
           <div className="hero-editorial__stage">
-            <h1 className="hero-editorial__headline" aria-label="Good vibes Good karma">
-              <span className="hero-editorial__phrase hero-editorial__phrase--left">
-                <span className="orange">Good</span>
-                <span>Vibes</span>
-              </span>
-              <span className="hero-editorial__phrase hero-editorial__phrase--right">
-                <span>Good</span>
-                <span className="orange">Karma</span>
+            <h1 className="hero-editorial__headline">
+              <span className="hero-editorial__desktop-title">A new way to <em>clock out</em></span>
+              <span className="hero-editorial__mobile-title">
+                <span>Work</span><span>Mode</span><span>Ends</span><span>Here</span>
               </span>
             </h1>
-
-            <div className="hero-editorial__product">
-              <img src="/KavaKarma_75mg_50ct_Bottle_Mango_FRONT.png" alt="Kava Karma 75mg Mango chewable tablets" />
-            </div>
-
-            <img className="hero-editorial__yoga" src="/YogaPose.png" alt="Woman seated in a calm meditation pose" />
-
-            <ShopLink className="button hero-editorial__shop">Try Kava Karma</ShopLink>
             <p className="hero-editorial__description">
               An easy, alcohol-free way to leave work mode behind with noble kava root extract.
               <strong>Unwind. Stay in the moment.</strong>
             </p>
+            <ShopLink className="button hero-editorial__shop">Try Kava Karma</ShopLink>
+            <img className="hero-editorial__floater" src="/MobilePoolFloater.png" alt="" aria-hidden="true" />
           </div>
         </section>
 

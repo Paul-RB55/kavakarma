@@ -1825,3 +1825,162 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   *::before,
   *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+
+/* Pool hero refresh */
+.hero.hero-editorial {
+  min-height: 620px;
+  height: clamp(620px, 56.25vw, 720px);
+  overflow: hidden;
+  color: white;
+  background: var(--ocean);
+}
+.hero.hero-editorial::before,
+.hero.hero-editorial::after,
+.hero-editorial__palms,
+.hero-editorial__product,
+.hero-editorial__yoga { display: none; }
+.hero-editorial__background,
+.hero-editorial__background img,
+.hero-editorial__shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-editorial__background { z-index: 0; }
+.hero-editorial__background img { object-fit: cover; object-position: center; }
+.hero-editorial__shade {
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(20,60,84,.97) 0%, rgba(20,60,84,.88) 25%, rgba(20,60,84,.48) 49%, rgba(20,60,84,.05) 72%);
+}
+.hero-editorial__stage {
+  z-index: 2;
+  width: min(1366px, 100%);
+  margin: 0 auto;
+}
+.hero.hero-editorial h1.hero-editorial__headline {
+  position: absolute;
+  z-index: 3;
+  top: 11%;
+  left: 3.4%;
+  right: auto;
+  bottom: auto;
+  width: min(58%, 790px);
+  color: white;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: clamp(64px, 7.25vw, 100px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+.hero-editorial__desktop-title { display: block; }
+.hero-editorial__desktop-title em {
+  display: block;
+  color: var(--orange);
+  font-style: normal;
+}
+.hero-editorial__mobile-title { display: none; }
+.hero-editorial__description {
+  z-index: 4;
+  left: 3.5%;
+  top: 47%;
+  width: min(44%, 610px);
+  color: white;
+  font-size: clamp(18px, 1.75vw, 28px);
+  font-weight: 500;
+  line-height: 1.32;
+}
+.hero-editorial__description strong {
+  margin-top: 16px;
+  color: var(--orange);
+  font-size: clamp(16px, 1.45vw, 23px);
+  line-height: 1.2;
+}
+.hero-editorial__shop {
+  z-index: 4;
+  left: 3.5%;
+  top: 69%;
+  min-width: 345px;
+  min-height: 80px;
+}
+.hero-editorial__floater { display: none; }
+
+@media (max-width: 900px) and (min-width: 601px) {
+  .hero.hero-editorial h1.hero-editorial__headline { font-size: clamp(55px, 8vw, 72px); }
+  .hero-editorial__description { top: 45%; font-size: 18px; }
+  .hero-editorial__shop { top: 68%; min-width: 280px; }
+}
+
+@media (max-width: 600px) {
+  .hero.hero-editorial {
+    min-height: 750px;
+    height: min(750px, calc(100svh - 102px));
+    max-height: none;
+  }
+  .hero-editorial__background,
+  .hero-editorial__background img,
+  .hero-editorial__floater {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero-editorial__background { z-index: 0; }
+  .hero-editorial__shade {
+    z-index: 1;
+    display: block;
+    background: linear-gradient(180deg, transparent 0 54%, rgba(20,60,84,.2) 66%, rgba(20,60,84,.96) 84%, var(--ocean) 100%);
+  }
+  .hero-editorial__stage { width: 100%; height: 100%; }
+  .hero.hero-editorial h1.hero-editorial__headline {
+    z-index: 2;
+    inset: 16px 0 auto;
+    width: 100%;
+    color: var(--ocean);
+    font-family: "Cooper Std", "Cooper Black", "Corben", Georgia, serif;
+    font-size: clamp(70px, 20.8vw, 86px);
+    line-height: .76;
+    letter-spacing: .01em;
+  }
+  .hero-editorial__desktop-title { display: none; }
+  .hero-editorial__mobile-title { display: block; }
+  .hero-editorial__mobile-title span { display: block; }
+  .hero-editorial__mobile-title span:nth-child(1) { color: var(--orange); }
+  .hero-editorial__mobile-title span:nth-child(3) { margin-top: 267px; padding-right: 2px; text-align: right; }
+  .hero-editorial__mobile-title span:nth-child(4) { padding-right: 2px; color: var(--orange); text-align: right; }
+  .hero-editorial__floater {
+    z-index: 3;
+    display: block;
+    pointer-events: none;
+  }
+  .hero-editorial__description {
+    z-index: 4;
+    left: 50%;
+    top: auto;
+    bottom: 112px;
+    width: calc(100% - 34px);
+    color: white;
+    font-size: 15px;
+    line-height: 1.35;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+  .hero-editorial__description strong {
+    margin-top: 14px;
+    color: var(--orange);
+    font-size: 14px;
+  }
+  .hero-editorial__shop {
+    z-index: 4;
+    left: 50%;
+    top: auto;
+    bottom: 9px;
+    width: min(250px, calc(100% - 60px));
+    min-width: 0;
+    min-height: 60px;
+    transform: translateX(-50%);
+  }
+}
