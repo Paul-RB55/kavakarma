@@ -1243,12 +1243,20 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 .hero-editorial__floater { display: none; }
 
 @media (min-width: 1700px) {
-  .hero-editorial__background { background: var(--ocean); }
+  .hero-editorial__background {
+    background: url("/DesktopPoolBackground.jpg") center / cover no-repeat;
+  }
   .hero-editorial__background img {
+    inset: 0 0 0 auto;
     left: auto;
     right: 0;
-    width: 1680px;
+    width: auto;
+    height: 100%;
     max-width: none;
+    object-fit: contain;
+    object-position: right center;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 100%);
   }
 }
 
