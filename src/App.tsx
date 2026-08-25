@@ -15,7 +15,7 @@ const ROOT_IMAGE = "/KavaKarmaRoot.jpg";
 const TEA_IMAGE = "/Labverify.jpg";
 const LIFESTYLE_IMAGE = "/NoAlcohol.jpg";
 
-type IconName = "arrow" | "bag" | "check" | "menu" | "close" | "leaf" | "moon" | "users" | "home" | "pin";
+type IconName = "arrow" | "bag" | "check" | "menu" | "close";
 
 function Icon({ name }: { name: IconName }) {
   const paths: Record<IconName, React.ReactNode> = {
@@ -24,11 +24,6 @@ function Icon({ name }: { name: IconName }) {
     check: <path d="m5 12 4 4L19 6" />,
     menu: <><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></>,
     close: <><path d="m6 6 12 12" /><path d="m18 6-12 12" /></>,
-    leaf: <><path d="M20 4C12 4 6 8 6 15c0 3 2 5 5 5 7 0 9-8 9-16Z" /><path d="M4 21c2-6 6-10 12-13" /></>,
-    moon: <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" />,
-    users: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></>,
-    home: <><path d="m3 11 9-8 9 8" /><path d="M5 10v11h14V10M9 21v-7h6v7" /></>,
-    pin: <><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></>,
   };
   return <svg viewBox="0 0 24 24" aria-hidden="true">{paths[name]}</svg>;
 }
