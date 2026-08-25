@@ -3,12 +3,14 @@ import { useEffect, useMemo, useState } from "react";
 const PRODUCT_PAGE_URL = "/product";
 const SHOPIFY_STORE_URL = "https://realbotanicals.com";
 const DEFAULT_VARIANT_ID = "55100370485567";
+const SELLING_PLAN_ID = "8277295423";
+const SUBSCRIPTION_DISCOUNT = 0.15;
 
 // Launch-day product settings live here so prices, IDs, and imagery can be swapped in one place.
 const PRODUCT_VARIANTS = [
-  { id: "55100370452799", count: 10, price: 14.99, note: "Try it out", badge: "", image: "/Kava-Karma_75mg_10ct-contents.webp" },
-  { id: "55100370485567", count: 20, price: 26.99, note: "The regular", badge: "Most popular", image: "/Kava-Karma_75mg_20ct-contents.webp" },
-  { id: "55100370518335", count: 50, price: 59.99, note: "Best value", badge: "Best value", image: "/Kava-Karma_75mg_50ct-contents.webp" },
+  { id: "55100370452799", count: 10, price: 14.99, badge: "", image: "/Kava-Karma_75mg_10ct-contents.webp" },
+  { id: "55100370485567", count: 20, price: 26.99, badge: "Most popular", image: "/Kava-Karma_75mg_20ct-contents.webp" },
+  { id: "55100370518335", count: 50, price: 59.99, badge: "Best value", image: "/Kava-Karma_75mg_50ct-contents.webp" },
 ] as const;
 const SHARED_PRODUCT_IMAGES = [
   { src: "/Kava-Karma_75mg_benefits.webp", alt: "Kava Karma focus, chill, and mood benefits" },
@@ -124,6 +126,7 @@ const faqs = [
   ["What does kava feel like?", "People commonly describe kava as relaxed and social rather than checked out—the edge comes off while the moment still feels like yours. Individual responses vary."],
   ["How long does it take to feel?", "Onset is commonly around 30 to 40 minutes. Give one tablet time before considering more, and always follow the serving guidance on the label."],
   ["Can I use kava instead of alcohol?", "Many adults choose kava for alcohol-free evenings, after-work decompression, or social plans. Do not combine kava with alcohol."],
+  ["Does Kava Karma contain kratom?", "No. Kava and kratom are different plants. Kava Karma contains kava root extract and no kratom or mitragynine."],
   ["Is there anything I should know before taking it?", "Do not combine kava with alcohol, use it if you have liver problems, drive after taking it, or use it while pregnant or nursing. Talk with a healthcare provider before use if you take prescription medication."],
 ];
 
@@ -354,12 +357,18 @@ function ProductPage() {
   const [selectedId, setSelectedId] = useState(initialVariant.id);
   const [quantity, setQuantity] = useState(1);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [purchaseType, setPurchaseType] = useState<"one-time" | "subscription">("one-time");
   const selected = PRODUCT_VARIANTS.find((variant) => variant.id === selectedId) ?? PRODUCT_VARIANTS[1];
   const galleryImages = useMemo(() => [
     { src: selected.image, alt: `Kava Karma ${selected.count}-count Mango chewable tablets` },
     ...SHARED_PRODUCT_IMAGES,
   ], [selected.count, selected.image]);
-  const total = useMemo(() => (selected.price * quantity).toFixed(2), [selected.price, quantity]);
+  const subscriptionPrice = useMemo(
+    () => Math.round(selected.price * (1 - SUBSCRIPTION_DISCOUNT) * 100) / 100,
+    [selected.price],
+  );
+  const unitPrice = purchaseType === "subscription" ? subscriptionPrice : selected.price;
+  const total = useMemo(() => (unitPrice * quantity).toFixed(2), [unitPrice, quantity]);
 
   const checkoutUrl = useMemo(() => {
     const passthrough = new URLSearchParams(window.location.search);
@@ -434,11 +443,28 @@ function ProductPage() {
               ))}
             </div>
 
-            <div className="pdp-purchase-option">
-              <span className="pdp-radio" aria-hidden="true" />
-              <div><strong>One-time purchase</strong><small>{selected.note}</small></div>
-              <b>${selected.price.toFixed(2)}</b>
-            </div>
+            <fieldset className="pdp-purchase-options">
+              <legend>Purchase options</legend>
+              <div className="pdp-purchase-options__choices">
+                <label className={purchaseType === "one-time" ? "selected" : ""}>
+                  <input type="radio" name="purchase-type" value="one-time" checked={purchaseType === "one-time"} onChange={() => setPurchaseType("one-time")} />
+                  <span className="pdp-radio" aria-hidden="true" />
+                  <strong>One-time purchase</strong>
+                  <b>${selected.price.toFixed(2)}</b>
+                </label>
+                <label className={purchaseType === "subscription" ? "selected" : ""}>
+                  <input type="radio" name="purchase-type" value="subscription" checked={purchaseType === "subscription"} onChange={() => setPurchaseType("subscription")} />
+                  <span className="pdp-radio" aria-hidden="true" />
+                  <span className="pdp-subscribe-title"><strong>Subscribe &amp; save</strong><em>Save 15%</em></span>
+                  <b>${subscriptionPrice.toFixed(2)}</b>
+                  <span className="pdp-subscribe-details">
+                    <span>Deliver once a month</span>
+                    <small>✓ Save 15% on every order</small>
+                    <small>✓ Cancel or pause anytime</small>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
 
             <div className="pdp-actions">
               <div className="pdp-quantity" aria-label="Quantity selector">
@@ -446,7 +472,18 @@ function ProductPage() {
                 <output aria-live="polite">{quantity}</output>
                 <button type="button" aria-label="Increase quantity" onClick={() => setQuantity((value) => Math.min(10, value + 1))}>+</button>
               </div>
-              <a className="pdp-checkout" href={checkoutUrl}>Checkout <span>${total}</span></a>
+              {purchaseType === "subscription" ? (
+                <form className="pdp-checkout-form" method="post" action={`${SHOPIFY_STORE_URL}/cart/add`}>
+                  <input type="hidden" name="form_type" value="product" />
+                  <input type="hidden" name="id" value={selected.id} />
+                  <input type="hidden" name="quantity" value={quantity} />
+                  <input type="hidden" name="selling_plan" value={SELLING_PLAN_ID} />
+                  <input type="hidden" name="return_to" value="/checkout" />
+                  <button className="pdp-checkout" type="submit">Checkout <span>${total}</span></button>
+                </form>
+              ) : (
+                <a className="pdp-checkout" href={checkoutUrl}>Checkout <span>${total}</span></a>
+              )}
             </div>
 
             <div className="pdp-trust" aria-label="Purchase benefits">
@@ -509,8 +546,19 @@ function ProductPage() {
       </footer>
 
       <div className="pdp-mobile-bar">
-        <div><b>{selected.count} count</b><span>${selected.price.toFixed(2)}</span></div>
-        <a href={checkoutUrl}>Checkout · ${total}</a>
+        <div><b>{selected.count} count</b><span>{purchaseType === "subscription" ? "Monthly · " : ""}${total}</span></div>
+        {purchaseType === "subscription" ? (
+          <form method="post" action={`${SHOPIFY_STORE_URL}/cart/add`}>
+            <input type="hidden" name="form_type" value="product" />
+            <input type="hidden" name="id" value={selected.id} />
+            <input type="hidden" name="quantity" value={quantity} />
+            <input type="hidden" name="selling_plan" value={SELLING_PLAN_ID} />
+            <input type="hidden" name="return_to" value="/checkout" />
+            <button type="submit">Checkout · ${total}</button>
+          </form>
+        ) : (
+          <a href={checkoutUrl}>Checkout · ${total}</a>
+        )}
       </div>
     </div>
   );
