@@ -1177,6 +1177,16 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 }
 .hero-editorial__floater { display: none; }
 
+@media (min-width: 1700px) {
+  .hero-editorial__background { background: var(--ocean); }
+  .hero-editorial__background img {
+    left: auto;
+    right: 0;
+    width: 1680px;
+    max-width: none;
+  }
+}
+
 @media (max-width: 900px) and (min-width: 601px) {
   .hero.hero-editorial h1.hero-editorial__headline { font-size: clamp(55px, 8vw, 72px); }
   .hero-editorial__description { top: 45%; font-size: 18px; }
