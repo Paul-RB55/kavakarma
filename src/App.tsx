@@ -3,13 +3,18 @@ import { useEffect, useMemo, useState } from "react";
 const PRODUCT_PAGE_URL = "/product";
 const SHOPIFY_STORE_URL = "https://realbotanicals.com";
 const DEFAULT_VARIANT_ID = "55100370485567";
-const PRODUCT_IMAGE = "/KavaKarma_75mg_50ct_Bottle_Mango_FRONT.png";
 
 // Launch-day product settings live here so prices, IDs, and imagery can be swapped in one place.
 const PRODUCT_VARIANTS = [
-  { id: "55100370452799", count: 10, price: 14.99, note: "Try it out", badge: "", image: PRODUCT_IMAGE },
-  { id: "55100370485567", count: 20, price: 26.99, note: "The regular", badge: "Most popular", image: PRODUCT_IMAGE },
-  { id: "55100370518335", count: 50, price: 59.99, note: "Best value", badge: "Best value", image: PRODUCT_IMAGE },
+  { id: "55100370452799", count: 10, price: 14.99, note: "Try it out", badge: "", image: "/Kava-Karma_75mg_10ct-contents.webp" },
+  { id: "55100370485567", count: 20, price: 26.99, note: "The regular", badge: "Most popular", image: "/Kava-Karma_75mg_20ct-contents.webp" },
+  { id: "55100370518335", count: 50, price: 59.99, note: "Best value", badge: "Best value", image: "/Kava-Karma_75mg_50ct-contents.webp" },
+] as const;
+const SHARED_PRODUCT_IMAGES = [
+  { src: "/Kava-Karma_75mg_benefits.webp", alt: "Kava Karma focus, chill, and mood benefits" },
+  { src: "/Kava-Karma_75mg_dosage.webp", alt: "Kava Karma tablet and suggested use" },
+  { src: "/Kava-Karma_75mg_review.webp", alt: "Five-star Kava Karma customer review" },
+  { src: "/Kava-Karma_75mg_USPS.webp", alt: "Kava Karma quality and manufacturing standards" },
 ] as const;
 const ROOT_IMAGE = "/KavaKarmaRoot.jpg";
 const TEA_IMAGE = "/Labverify.jpg";
@@ -349,7 +354,12 @@ function ProductPage() {
   const initialVariant = PRODUCT_VARIANTS.find((variant) => variant.id === requestedVariant) ?? PRODUCT_VARIANTS[1];
   const [selectedId, setSelectedId] = useState(initialVariant.id);
   const [quantity, setQuantity] = useState(1);
+  const [galleryIndex, setGalleryIndex] = useState(0);
   const selected = PRODUCT_VARIANTS.find((variant) => variant.id === selectedId) ?? PRODUCT_VARIANTS[1];
+  const galleryImages = useMemo(() => [
+    { src: selected.image, alt: `Kava Karma ${selected.count}-count Mango chewable tablets` },
+    ...SHARED_PRODUCT_IMAGES,
+  ], [selected.count, selected.image]);
   const total = useMemo(() => (selected.price * quantity).toFixed(2), [selected.price, quantity]);
 
   const checkoutUrl = useMemo(() => {
@@ -377,15 +387,21 @@ function ProductPage() {
         <section className="pdp-hero" aria-labelledby="product-title">
           <div className="pdp-gallery">
             <div className="pdp-gallery__frame">
-              <span className="pdp-gallery__test">75mg per tablet</span>
-              <div className="pdp-gallery__sun" aria-hidden="true" />
-              <img src={selected.image} alt={`Kava Karma ${selected.count}-count Mango chewable tablets`} />
-              <span className="pdp-gallery__count">{selected.count} count</span>
+              <img className="pdp-gallery__main-image" src={galleryImages[galleryIndex].src} alt={galleryImages[galleryIndex].alt} />
             </div>
-            <div className="pdp-gallery__thumbs" aria-label="Product highlights">
-              <button className="active" type="button"><img src={selected.image} alt="Front of Kava Karma bottle" /></button>
-              <button type="button" aria-label="Mango flavor"><span className="pdp-thumb-mango">Mango</span></button>
-              <button type="button" aria-label="75 milligrams per tablet"><span className="pdp-thumb-dose">75<small>mg</small></span></button>
+            <div className="pdp-gallery__thumbs" aria-label="Product gallery">
+              {galleryImages.map((image, index) => (
+                <button
+                  className={galleryIndex === index ? "active" : ""}
+                  type="button"
+                  aria-label={`View image ${index + 1}: ${image.alt}`}
+                  aria-pressed={galleryIndex === index}
+                  onClick={() => setGalleryIndex(index)}
+                  key={image.src}
+                >
+                  <img src={image.src} alt="" />
+                </button>
+              ))}
             </div>
           </div>
 
@@ -406,7 +422,10 @@ function ProductPage() {
                   role="radio"
                   aria-checked={selected.id === variant.id}
                   className={selected.id === variant.id ? "selected" : ""}
-                  onClick={() => setSelectedId(variant.id)}
+                  onClick={() => {
+                    setSelectedId(variant.id);
+                    setGalleryIndex(0);
+                  }}
                 >
                   {variant.badge && <small>{variant.badge}</small>}
                   <strong>{variant.count}</strong>
@@ -461,6 +480,22 @@ function ProductPage() {
             <article><b>75mg</b><h3>Precisely portioned</h3><p>A consistent serving in every Mango chewable tablet.</p></article>
             <article><b>01</b><h3>One simple ritual</h3><p>No powder to knead, tea to strain, or cup to clean.</p></article>
             <article><b>☼</b><h3>Made for evenings</h3><p>A relaxed, social kind of unwind that leaves the night yours.</p></article>
+          </div>
+        </section>
+
+        <section className="reviews section pdp-reviews" aria-labelledby="pdp-reviews-title">
+          <div className="section-heading centered reviews-heading">
+            <p className="eyebrow"><span /> Kava Karma reviews</p>
+            <h2 id="pdp-reviews-title">Good vibes<br /><em>from real people</em></h2>
+          </div>
+          <div className="reviews-grid">
+            {reviews.map((review) => (
+              <article className="review-card" key={review.name}>
+                <div className="review-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote>“{review.copy}”</blockquote>
+                <p>{review.name}</p>
+              </article>
+            ))}
           </div>
         </section>
       </main>
