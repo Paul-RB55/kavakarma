@@ -126,9 +126,79 @@ const faqs = [
   ["What does kava feel like?", "People commonly describe kava as relaxed and social rather than checked out—the edge comes off while the moment still feels like yours. Individual responses vary."],
   ["How long does it take to feel?", "Onset is commonly around 30 to 40 minutes. Give one tablet time before considering more, and always follow the serving guidance on the label."],
   ["Can I use kava instead of alcohol?", "Many adults choose kava for alcohol-free evenings, after-work decompression, or social plans. Do not combine kava with alcohol."],
-  ["Does Kava Karma contain kratom?", "No. Kava and kratom are different plants. Kava Karma contains kava root extract and no kratom or mitragynine."],
   ["Is there anything I should know before taking it?", "Do not combine kava with alcohol, use it if you have liver problems, drive after taking it, or use it while pregnant or nursing. Talk with a healthcare provider before use if you take prescription medication."],
 ];
+
+function HomeCheckoutPanel() {
+  const [selectedId, setSelectedId] = useState(DEFAULT_VARIANT_ID);
+  const [purchaseType, setPurchaseType] = useState<"one-time" | "subscription">("one-time");
+  const selected = PRODUCT_VARIANTS.find((variant) => variant.id === selectedId) ?? PRODUCT_VARIANTS[1];
+  const subscriptionPrice = Math.round(selected.price * (1 - SUBSCRIPTION_DISCOUNT) * 100) / 100;
+  const checkoutPrice = purchaseType === "subscription" ? subscriptionPrice : selected.price;
+  const oneTimeCheckoutUrl = `${SHOPIFY_STORE_URL}/cart/${selected.id}:1?checkout`;
+
+  return (
+    <div className="home-checkout">
+      <div className="pdp-selection-heading">
+        <span>Choose your size</span>
+        <b>{selected.count} tablets</b>
+      </div>
+      <div className="pdp-variants" role="radiogroup" aria-label="Choose tablet count">
+        {PRODUCT_VARIANTS.map((variant) => (
+          <button
+            key={variant.id}
+            type="button"
+            role="radio"
+            aria-checked={selected.id === variant.id}
+            className={selected.id === variant.id ? "selected" : ""}
+            onClick={() => setSelectedId(variant.id)}
+          >
+            {variant.badge && <small>{variant.badge}</small>}
+            <strong>{variant.count}</strong>
+            <span>ct.</span>
+            <em>${variant.price.toFixed(2)}</em>
+          </button>
+        ))}
+      </div>
+
+      <fieldset className="pdp-purchase-options home-purchase-options">
+        <legend>Purchase options</legend>
+        <div className="pdp-purchase-options__choices">
+          <label className={purchaseType === "one-time" ? "selected" : ""}>
+            <input type="radio" name="home-purchase-type" value="one-time" checked={purchaseType === "one-time"} onChange={() => setPurchaseType("one-time")} />
+            <span className="pdp-radio" aria-hidden="true" />
+            <strong>One-time purchase</strong>
+            <b>${selected.price.toFixed(2)}</b>
+          </label>
+          <label className={purchaseType === "subscription" ? "selected" : ""}>
+            <input type="radio" name="home-purchase-type" value="subscription" checked={purchaseType === "subscription"} onChange={() => setPurchaseType("subscription")} />
+            <span className="pdp-radio" aria-hidden="true" />
+            <span className="pdp-subscribe-title"><strong>Subscribe &amp; save</strong><em>Save 15%</em></span>
+            <b>${subscriptionPrice.toFixed(2)}</b>
+            <span className="pdp-subscribe-details">
+              <span>Deliver once a month</span>
+              <small>✓ Save 15% on every order</small>
+              <small>✓ Cancel or pause anytime</small>
+            </span>
+          </label>
+        </div>
+      </fieldset>
+
+      {purchaseType === "subscription" ? (
+        <form className="home-buy-form" method="post" action={`${SHOPIFY_STORE_URL}/cart/add`}>
+          <input type="hidden" name="form_type" value="product" />
+          <input type="hidden" name="id" value={selected.id} />
+          <input type="hidden" name="quantity" value="1" />
+          <input type="hidden" name="selling_plan" value={SELLING_PLAN_ID} />
+          <input type="hidden" name="return_to" value="/checkout" />
+          <button className="button home-buy-now" type="submit">Buy now <span>${checkoutPrice.toFixed(2)}</span></button>
+        </form>
+      ) : (
+        <a className="button home-buy-now" data-shop-link href={oneTimeCheckoutUrl}>Buy now <span>${checkoutPrice.toFixed(2)}</span></a>
+      )}
+    </div>
+  );
+}
 
 function Home() {
   const [showSticky, setShowSticky] = useState(false);
@@ -248,12 +318,12 @@ function Home() {
               <p className="eyebrow"><span /> Get the vibes</p>
               <h3>Kava Karma</h3>
               <p>Whether you are trying kava for the first time or making it part of your evening routine, there is a size that fits.</p>
+              <HomeCheckoutPanel />
               <ul className="check-list">
                 <li><Icon name="check" />75mg noble kava root extract per tablet</li>
                 <li><Icon name="check" />Seven &amp; Alcohol Free</li>
                 <li><Icon name="check" />Made in a GMP-certified U.S. facility</li>
               </ul>
-              <ShopLink className="button dark">Shop Kava Karma <Icon name="arrow" /></ShopLink>
               <p className="guarantee">30-day money-back guarantee</p>
             </div>
           </div>
