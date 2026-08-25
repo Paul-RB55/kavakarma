@@ -104,6 +104,21 @@ const kavaPoints = [
   { title: "No traditional prep", copy: "No powder, straining, mixing, or earthy cup of tea." },
 ];
 
+const reviews = [
+  {
+    name: "Tim J.",
+    copy: "Perfect for winding down after work without feeling checked out. Really like the mango flavor too.",
+  },
+  {
+    name: "Paul J.",
+    copy: "I was new to kava and this made it super easy. Definitely a nice way to relax at the end of the day.",
+  },
+  {
+    name: "Dave M.",
+    copy: "Love these for nights when I want to unwind but don’t feel like drinking. Easy, convenient, and they taste great.",
+  },
+];
+
 const faqs = [
   ["What is Kava Karma?", "Kava Karma is a Mango-flavored chewable tablet with 75mg of noble kava root extract. It contains no kratom, caffeine, or alcohol and needs no mixing or preparation."],
   ["What does kava feel like?", "People commonly describe kava as relaxed and social rather than checked out—the edge comes off while the moment still feels like yours. Individual responses vary."],
@@ -239,6 +254,22 @@ function Home() {
               <ShopLink className="button dark">Shop Kava Karma <Icon name="arrow" /></ShopLink>
               <p className="guarantee">30-day money-back guarantee</p>
             </div>
+          </div>
+        </section>
+
+        <section className="reviews section" aria-labelledby="reviews-title">
+          <div className="section-heading centered reviews-heading">
+            <p className="eyebrow"><span /> Kava Karma reviews</p>
+            <h2 id="reviews-title">Good vibes<br /><em>from real people</em></h2>
+          </div>
+          <div className="reviews-grid">
+            {reviews.map((review) => (
+              <article className="review-card" key={review.name}>
+                <div className="review-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote>“{review.copy}”</blockquote>
+                <p>{review.name}</p>
+              </article>
+            ))}
           </div>
         </section>
 
