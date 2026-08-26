@@ -77,15 +77,15 @@ const feelings = [
   {
     occasion: "After work",
     title: "Unwind",
-    copy: "Close the laptop, change gears, and ease out of work mode.",
+    copy: "Close the laptop, leave work mode behind, and give the evening a chance to begin.",
     image: "/Daysoftens_Cardimage.jpg",
     icon: "/Daysofticon.svg",
     position: "center",
   },
   {
     occasion: "At home",
-    title: "Stay present",
-    copy: "Wind down without checking out of your evening.",
+    title: "Settle In",
+    copy: "Get comfortable, slow things down, and make the most of your time at home.",
     image: "/staypresent_Cardimage.jpg",
     icon: "/StayPresent.svg",
     position: "center",
@@ -141,7 +141,6 @@ function HomeCheckoutPanel() {
     <div className="home-checkout">
       <div className="pdp-selection-heading">
         <span>Choose your size</span>
-        <b>{selected.count} tablets</b>
       </div>
       <div className="pdp-variants" role="radiogroup" aria-label="Choose tablet count">
         {PRODUCT_VARIANTS.map((variant) => (
@@ -263,7 +262,7 @@ function Home() {
             <p className="eyebrow"><span /> Made for real evenings</p>
             <h2>How does Kava Karma<br /><em>feel?</em></h2>
             <p className="story-heading__body">
-              Kava is often described as relaxed, social, and present. Kava Karma brings that lighter kind of wind-down into the moments that make up a real evening.
+              Kava is often described as relaxed, social, and present. Kava Karma brings that lighter kind of wind-down into whatever comes after the workday.
             </p>
           </div>
           <div className="lifestyle-grid">
@@ -321,7 +320,7 @@ function Home() {
               <HomeCheckoutPanel />
               <ul className="check-list">
                 <li><Icon name="check" />75mg noble kava root extract per tablet</li>
-                <li><Icon name="check" />Seven &amp; Alcohol Free</li>
+                <li><Icon name="check" />Natural Alcohol Alternative</li>
                 <li><Icon name="check" />Made in a GMP-certified U.S. facility</li>
               </ul>
               <p className="guarantee">30-day money-back guarantee</p>
@@ -351,9 +350,9 @@ function Home() {
             <h2>Keep the night<br /><em>Skip the drink</em></h2>
             <p>You do not have to swear off alcohol to want another option sometimes. Kava Karma fits the nights when you want to unwind or be social without making a drink the center of the evening.</p>
             <ul>
-              <li><span>◎</span><div><b>A lighter kind of social</b><p>Kava has a long tradition around conversation and community. People commonly describe the experience as relaxed, open, and present.</p></div></li>
-              <li><span>☼</span><div><b>The evening stays yours</b><p>Reach for it after work, with friends, or during a quiet night at home.</p></div></li>
-              <li><span>✦</span><div><b>No big declaration</b><p>No cocktail to mix and no lifestyle change to announce. Just another alcohol-free option when it suits you.</p></div></li>
+              <li><span>◎</span><div><b>Keep The Wind-Down Ritual</b><p>Something intentional to reach for when you are ready to shift out of work mode and into your evening.</p></div></li>
+              <li><span>☼</span><div><b>Rooted In Tradition</b><p>Kava has long been shared across South Pacific communities around conversation, gathering, and connection.</p></div></li>
+              <li><span>✦</span><div><b>Zero Alcohol. Still a Moment</b><p>No cocktail to mix and no lifestyle change to announce. Just another alcohol-free option when it suits you.</p></div></li>
             </ul>
             <ShopLink>Shop Kava Karma <Icon name="arrow" /></ShopLink>
           </div>
@@ -490,7 +489,6 @@ function ProductPage() {
 
             <div className="pdp-selection-heading">
               <span>Choose your size</span>
-              <b>{selected.count} tablets</b>
             </div>
             <div className="pdp-variants" role="radiogroup" aria-label="Choose tablet count">
               {PRODUCT_VARIANTS.map((variant) => (
