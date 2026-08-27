@@ -239,7 +239,7 @@ function Home() {
           <div className="hero-editorial__shade" aria-hidden="true" />
           <div className="hero-editorial__stage">
             <h1 className="hero-editorial__headline">
-              <span className="hero-editorial__desktop-title">A new way to <em>clock out</em></span>
+              <span className="hero-editorial__desktop-title">Work Mode <em>Ends Here </em></span>
               <span className="hero-editorial__mobile-title">
                 <span>Work</span><span>Mode</span><span>Ends</span><span>Here</span>
               </span>
