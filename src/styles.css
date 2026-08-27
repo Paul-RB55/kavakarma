@@ -238,6 +238,8 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
   background: var(--paper);
 }
 .story-heading { max-width: 850px; }
+.story-title__line { display: block; }
+.story-title__mobile-word { display: none; }
 .story-heading > p.story-heading__body:last-child {
   max-width: 730px;
   margin: 24px 0 0;
@@ -322,7 +324,7 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
   text-transform: uppercase;
 }
 .lifestyle-card h3 { margin: 0 0 11px; text-transform: uppercase; letter-spacing: -.035em; font-size: clamp(18px, 1.45vw, 22px); line-height: 1.05; }
-.lifestyle-card p { margin: 0; color: #f3f7f9; font-size: 13px; line-height: 1.55; }
+.lifestyle-card p { margin: 0; color: white; font-size: 13px; line-height: 1.55; }
 .story-cta {
   width: max-content;
   margin: 38px auto 0;
@@ -374,7 +376,7 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
   font-size: clamp(43px, 4.7vw, 66px);
 }
 .kava-origin__copy h2 em { color: var(--orange); font-style: normal; }
-.kava-origin__copy > p:not(.eyebrow) { max-width: 680px; margin: 23px 0 0; color: #e2edf1; font-size: 15px; line-height: 1.75; }
+.kava-origin__copy > p:not(.eyebrow) { max-width: 680px; margin: 23px 0 0; color: white; font-size: 15px; line-height: 1.75; }
 .kava-origin__points { margin-top: 29px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; }
 .kava-origin__points article {
   min-height: 133px;
@@ -385,7 +387,7 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
   backdrop-filter: blur(8px);
 }
 .kava-origin__points h3 { margin: 0 0 8px; color: white; text-transform: uppercase; font-size: 11px; line-height: 1.35; }
-.kava-origin__points p { margin: 0; color: #cfe0e6; font-size: 11px; line-height: 1.55; }
+.kava-origin__points p { margin: 0; color: white; font-size: 11px; line-height: 1.55; }
 .kava-origin__image {
   aspect-ratio: 1 / 1.04;
   overflow: hidden;
@@ -550,12 +552,12 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
 .fits-image { position: relative; z-index: 2; }
 .fits-copy .eyebrow { color: var(--sky); }
 .fits-copy h2 { color: white; font-size: clamp(45px, 4.4vw, 58px); }
-.fits-copy > p:not(.eyebrow) { max-width: 650px; margin: 25px 0 27px; color: #d4e1e6; font-size: 16px; line-height: 1.7; }
+.fits-copy > p:not(.eyebrow) { max-width: 650px; margin: 25px 0 27px; color: white; font-size: 16px; line-height: 1.7; }
 .fits-copy ul { list-style: none; margin: 0 0 34px; padding: 0; display: grid; gap: 12px; }
 .fits-copy li { display: grid; grid-template-columns: 38px 1fr; align-items: start; gap: 7px; }
 .fits-copy li > span { width: 29px; height: 29px; display: grid; place-items: center; color: var(--mango); border: 1px solid rgba(255,201,78,.4); border-radius: 50%; font-weight: 800; }
 .fits-copy li b { font-size: 15px; }
-.fits-copy li p { display: inline; margin: 0 0 0 4px; color: #b9cbd2; font-size: 13px; line-height: 1.5; }
+.fits-copy li p { display: inline; margin: 0 0 0 4px; color: white; font-size: 13px; line-height: 1.5; }
 .fits-image { border-radius: 26px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(245,146,33,.2); }
 .fits-image img { width: 100%; min-height: 520px; display: block; object-fit: cover; }
 
@@ -600,8 +602,8 @@ h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
 .final-cta .eyebrow { color: var(--mango); }
 .final-cta__eyebrow b { line-height: 1.45; }
 .final-cta h2 { color: white; }
-.final-cta > p:not(.eyebrow) { margin: 24px 0 30px; color: #d7e6eb; font-size: 16px; }
-.final-cta small { margin-top: 15px; color: #b7cbd3; font-size: 11px; font-weight: 700; }
+.final-cta > p:not(.eyebrow) { margin: 24px 0 30px; color: white; font-size: 16px; }
+.final-cta small { margin-top: 15px; color: white; font-size: 11px; font-weight: 700; }
 
 footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #081d28; color: white; }
 .footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: start; padding-bottom: 38px; }
@@ -652,7 +654,14 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   .product-image-shell { min-height: 520px; }
   .fits-evening { gap: 48px; }
   .fits-image { width: 100%; max-width: 660px; margin: auto; }
-  .experience { gap: 45px; }
+  .experience { gap: 0; }
+  .experience-copy { display: contents; }
+  .experience-copy .eyebrow { order: 1; }
+  .experience-copy h2 { order: 2; }
+  .experience-image { order: 3; margin-top: 32px; }
+  .experience-copy > p:not(.eyebrow) { order: 4; }
+  .experience-copy ul { order: 5; }
+  .experience-copy > a { order: 6; justify-self: start; }
   .kava-origin { gap: 48px; }
   .kava-origin__copy { max-width: 720px; }
   .kava-origin__image { width: min(100%, 660px); margin: 0 auto; aspect-ratio: 1.12 / 1; }
@@ -691,6 +700,8 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   .experience-copy h2,
   .final-cta h2,
   .kava-origin__copy h2 { font-size: 41px; }
+  .story-title__desktop-word { display: none; }
+  .story-title__mobile-word { display: inline; }
   .lifestyle-grid { width: min(100%, 324px); grid-template-columns: 1fr; justify-content: center; margin: 42px auto 0; }
   .lifestyle-card { min-height: 0; aspect-ratio: 324 / 384; }
   .lifestyle-card__badge { top: 0; right: 0; width: 17.5926%; height: auto; }
@@ -911,6 +922,8 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
   cursor: pointer;
   transition: background .2s ease, border-color .2s ease;
 }
+.pdp-purchase-options label:first-child { border-radius: 17px 17px 0 0; }
+.pdp-purchase-options label:last-child { border-radius: 0 0 17px 17px; }
 .pdp-purchase-options label + label { border-top-color: var(--line); }
 .pdp-purchase-options label.selected {
   border-color: var(--orange);
@@ -1017,7 +1030,7 @@ footer { padding: 70px max(28px, calc((100vw - 1180px) / 2)) 24px; background: #
 .pdp-benefits article { padding: 31px 24px; border: 1px solid rgba(255,255,255,.13); border-radius: 22px; background: rgba(255,255,255,.045); }
 .pdp-benefits article > b { width: 70px; height: 70px; margin: auto; display: grid; place-items: center; border: 1px solid rgba(255,201,78,.42); border-radius: 50%; color: var(--mango); font-size: 20px; }
 .pdp-benefits h3 { margin: 21px 0 9px; text-transform: uppercase; font-size: 17px; }
-.pdp-benefits article p { max-width: 280px; margin: auto; color: #c8d8df; font-size: 13px; line-height: 1.6; }
+.pdp-benefits article p { max-width: 280px; margin: auto; color: white; font-size: 13px; line-height: 1.6; }
 .pdp-mobile-bar { display: none; }
 
 @media (max-width: 980px) {

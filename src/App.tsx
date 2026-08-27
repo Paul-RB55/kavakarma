@@ -260,7 +260,10 @@ function Home() {
         <section className="story section" id="story">
           <div className="section-heading story-heading">
             <p className="eyebrow"><span /> Made for real evenings</p>
-            <h2>How does Kava Karma<br /><em>feel?</em></h2>
+            <h2>
+              <span className="story-title__line story-title__line--one">How does Kava <span className="story-title__desktop-word">Karma</span></span>
+              <span className="story-title__line story-title__line--two"><span className="story-title__mobile-word">Karma </span><em>feel?</em></span>
+            </h2>
             <p className="story-heading__body">
               Kava is often described as relaxed, social, and present. Kava Karma brings that lighter kind of wind-down into whatever comes after the workday.
             </p>
