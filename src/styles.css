@@ -11,7 +11,7 @@
   --sand: #f4f0e9;
   --paper: #fffdf8;
   --text: #173241;
-  --muted: #63727a;
+  --muted: #000000;
   --line: rgba(20, 60, 84, 0.15);
   --cta-gradient: linear-gradient(90deg, var(--red), #df5725 58%, var(--orange));
 }
